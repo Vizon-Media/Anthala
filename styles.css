@@ -1,0 +1,2246 @@
+/* ===========================================
+   STILURI GLOBALE
+   =========================================== */
+
+/* Variabile pentru culori și proporții */
+:root {
+  --golden-ratio: 61.8%;
+  --golden-ratio-small: 38.2%;
+  --color-primary: #2c3e50;
+  --color-secondary: #3498db;
+  --color-accent: #e74c3c;
+  --color-light: #ecf0f1;
+  --border-radius: 10px;
+  --text-color: #333;
+  --text-light: #fff;
+}
+
+/* Legal information container */
+.legal-info-container {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  color: #000000;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.legal-info-container p {
+  margin: 0;
+  color: #000000;
+}
+
+/* Resetare și stilizare de bază */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  background-color: #f3f3f3;
+}
+
+/* Stiluri globale pentru iconițe */
+.service>i,
+.about>i,
+.service-icon,
+.about-icon {
+  font-size: 1.2em;
+  margin-top: 3px;
+  min-width: 24px;
+  flex-shrink: 0;
+}
+
+/* Dimensiuni specifice pentru titlurile folosite */
+h2 {
+  margin: 0 0 15px 0;
+  padding: 0;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-light);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Stil global pentru toate paragrafele */
+p {
+  margin: 0 0 14px 0;
+  padding: 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: rgb(241, 241, 241);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Resetăm margin-ul pentru ultimul paragraf din fiecare container */
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Hide mobile footer by default (will be shown on mobile via responsive.css) */
+.mobile-footer {
+  display: none;
+}
+
+/* Stil global pentru toate link-urile */
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:not(.social-link):hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Stiluri pentru resizer */
+.resizer {
+  background-color: transparent;
+  position: relative;
+  z-index: 10;
+  transition: background-color 0.2s;
+}
+
+.resizer::before {
+  content: '';
+  position: absolute;
+  background-color: rgba(224, 224, 224, 0.8);
+  transition: background-color 0.2s;
+}
+
+.resizer-horizontal {
+  width: 100%;
+  height: 8px;
+  cursor: row-resize;
+}
+
+.resizer-horizontal::before {
+  width: 60px;
+  height: 4px;
+  left: 50%;
+  top: 2px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.resizer-vertical {
+  width: 8px;
+  height: 100%;
+  cursor: col-resize;
+}
+
+.resizer-vertical::before {
+  width: 4px;
+  height: 60px;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  border-radius: 2px;
+}
+
+
+/* Stiluri globale pentru toate butoalele */
+button,
+.btn {
+  cursor: pointer;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+/* Make sure containers are properly positioned for resizing */
+.main-container {
+  display: flex;
+  position: relative;
+  height: calc(100vh - 100px);
+  overflow: hidden;
+}
+
+.left-large,
+.right-small {
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* ===========================================
+   STILURI PENTRU FORMULARE
+   =========================================== */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  /* max-height: 100vh; */
+  overflow-y: auto;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
+}
+
+.contact-form::-webkit-scrollbar {
+  width: 6px;
+}
+
+.contact-form::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.contact-form::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.contact-form h3 {
+  margin-bottom: 10px;
+  color: var(--color-primary);
+  font-size: 1.2em;
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 10px 0;
+  z-index: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--color-primary);
+  font-size: 0.95em;
+}
+
+/* Stilizare câmpuri de input */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+  padding: 12px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95em;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  color: #374151;
+  width: 100%;
+}
+
+/* Stilizare focus pentru toate câmpurile */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Stilizare specială pentru dropdown-uri */
+.form-group {
+  position: relative;
+}
+
+.form-group select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px top 50%;
+  background-size: 16px;
+  padding-right: 40px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  font-size: 0.95em;
+}
+
+/* Efect la hover pentru dropdown */
+.form-group select:hover {
+  border-color: #9ca3af;
+}
+
+/* Stil pentru câmpurile obligatorii */
+.required-asterisk {
+  color: #e53e3e;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+/* Ascundem asteriscul generat de CSS */
+.form-group.required label:after {
+  display: none;
+}
+
+/* Stil pentru etichetele câmpurilor */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Stil pentru câmpurile obligatorii necompletate */
+.form-group.required input:required:not(:placeholder-shown):invalid,
+.form-group.required select:required:invalid,
+.form-group.required textarea:required:invalid {
+  border-color: #e53e3e;
+  background-color: #fff5f5;
+}
+
+/* Stil pentru câmpurile valide */
+.form-group.required input:valid,
+.form-group.required select:valid,
+.form-group.required textarea:valid {
+  border-color: #10b981;
+  background-color: #f0fdf4;
+}
+
+/* Stil pentru mesajele de eroare */
+.error-message {
+  color: #e53e3e;
+  font-size: 0.8em;
+  margin-top: 4px;
+  display: none;
+}
+
+/* Afișează mesajul de eroare când câmpul este invalid */
+input:invalid+.error-message,
+select:invalid+.error-message,
+textarea:invalid+.error-message {
+  display: block;
+}
+
+/* Stil pentru câmpurile obligatorii necompletate */
+.form-group.required input:required:invalid,
+.form-group.required select:required:invalid,
+.form-group.required textarea:required:invalid {
+  border-color: #e53e3e;
+  background-color: #fff5f5;
+}
+
+/* Stil pentru câmpurile valide */
+.form-group.required input:valid,
+.form-group.required select:valid,
+.form-group.required textarea:valid {
+  border-color: #10b981;
+  background-color: #f0fdf4;
+}
+
+/* Stilizare opțiuni dropdown */
+.form-group select option {
+  padding: 10px 15px;
+  background-color: white;
+  color: #333;
+  font-size: 0.95em;
+}
+
+/* Stilizare scrollbar pentru dropdown-uri cu multe opțiuni */
+.form-group select[multiple],
+.form-group select[size] {
+  height: auto;
+  min-height: 120px;
+  padding-right: 15px;
+  background-image: none;
+}
+
+/* Stilizare buton submit */
+.submit-btn {
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Stilizare pentru file input */
+.file-input {
+  margin-top: 5px;
+  width: 100%;
+  padding: 10px;
+  border: 1px dashed #d1d5db;
+  border-radius: 6px;
+  background-color: #f9fafb;
+  transition: all 0.3s ease;
+}
+
+.file-input:hover {
+  border-color: var(--color-secondary);
+  background-color: #f0f7ff;
+}
+
+.file-info {
+  font-size: 0.85em;
+  color: #4b5563;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+.consent-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 15px 0 5px;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid var(--color-secondary);
+}
+
+.consent-checkbox input[type="checkbox"] {
+  margin-top: 4px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+}
+
+.consent-checkbox label {
+  font-size: 0.9em;
+  color: #4b5563;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.file-hint {
+  display: block;
+  font-size: 0.8em;
+  color: #6b7280;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* Stilizare pentru câmpurile obligatorii */
+.form-group.required label:after {
+  content: ' *';
+  color: #e53e3e;
+}
+
+/* Stilizare pentru erori de validare */
+.form-group input:invalid,
+.form-group select:invalid,
+.form-group textarea:invalid {
+  border-color: #e53e3e;
+}
+
+.form-group input:invalid:focus,
+.form-group select:invalid:focus,
+.form-group textarea:invalid:focus {
+  box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.2);
+}
+
+/* Stiluri pentru containerul de butoane de proiecte */
+.left-large {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: auto ;
+  background-color: transparent;
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
+}
+
+.carousel {
+  position: relative;
+  flex-grow: 1;
+  /* Ocupă tot spațiul disponibil */
+  min-height: 200px;
+  /* Înălțime minimă pentru carusel */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  /* Permite scroll dacă conținutul depășește înălțimea */
+}
+
+/* Carousel Overlay */
+.carousel-overlay {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  text-align: left;
+  color: rgb(255, 255, 255);
+  z-index: 5;
+  background-color: transparent;
+  padding: 2rem;
+  max-width: 100%;
+}
+
+.carousel-overlay h1 {
+  font-size: 5rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  line-height: 1.1;
+}
+
+.carousel-overlay p {
+  font-size: 1.2rem;
+  margin: 0;
+  line-height: 1.5;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  max-width: 100%;
+}
+
+.carousel-wrapper {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.projects-buttons-container {
+  display: flex;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  margin: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  position: relative;
+  gap: 2px;
+}
+
+.project-button.active {
+  color: #fff;
+  background-color: #60708d;
+  font-weight: bold;
+  transform: none !important;
+}
+
+.project-button,
+.project-button *,
+.project-button:active,
+.project-button:focus,
+.project-button:hover,
+.project-button.active,
+.project-button.active * {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+  font-size: 0.9em !important;
+}
+
+.project-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 40px;
+  padding: 0 25px 0 15px;
+  background: rgba(158, 158, 158, 0.7);
+  position: relative;
+  font-size: 0.9em;
+  font-weight: normal;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 30;
+  line-height: 1;
+  vertical-align: top;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+/* Stiluri pentru containerul de informații ale proiectelor */
+.project-info-container {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  min-height: 120px;
+  box-sizing: border-box;
+  z-index: 20;
+  /* Asigură-te că este deasupra imaginii din carusel */
+  margin-top: auto;
+  /* Asigură că se aliniază la baza containerului părinte */
+  transition: transform 0.3s ease;
+  /* Adaugă o tranziție pentru o mișcare mai fluidă */
+  flex: 1;
+  overflow-y: auto;
+  color: #020202;
+  line-height: 1.6;
+  /* margin: 0 10px 10px 10px; */
+  border-radius: 0;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+}
+
+.project-info.active {
+  display: block;
+}
+
+.project-info h3 {
+  color: #e2e2e2;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.project-info p {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #cbcbcb;
+  line-height: 1.6;
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Container pentru conținutul paginii */
+.carousel-wrapper {
+  flex: 0 0 auto;
+  /* Nu permite să crească sau să se micșoreze */
+}
+
+/* Container pentru butoane și informații */
+.project-content-wrapper {
+  position: absolute;
+  bottom: 0;
+  /* Se va poziționa în partea de jos */
+  left: 0;
+  right: 0;
+  top: auto;
+  /* Anulează orice top definit anterior */
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: transparent;
+  box-sizing: border-box;
+  /* Asigură că padding-ul nu afectează dimensiunile */
+}
+
+/* Stilizare butoane */
+.projects-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.project-info-container h3 {
+  margin-top: 0;
+  color: #fff;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.project-info-container p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #020202;
+}
+
+/* Stilizare butoane */
+.project-button {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  color: rgb(0, 0, 0);
+  border-radius: 4px 4px 0 0;
+  border-bottom: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: 0.9em;
+  position: relative;
+  z-index: 1;
+}
+
+.project-button:hover {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.project-button.active {
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: none;
+  /* border-color: #8b8b8b; */
+  color: rgb(0, 0, 0);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+#projects-data {
+  display: none;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-images {
+  display: none;
+}
+
+.project-info {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.logo {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Stilizare header */
+.site-header {
+  width: 100%;
+  height: 60px;
+  background-color: transparent;
+  color: black;
+  /* Culoarea textului a fost schimbată la negru */
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.header-content {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-phone {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  margin-right: 5px;
+  /* Spațiu suplimentar în dreapta */
+  flex-direction: row;
+  /* Ordine normală a elementelor */
+}
+
+.header-phone .phone-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background-color: #2c3e50;
+  border-radius: 50%;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid white;
+  /* Bordură subțire pentru contrast */
+}
+
+.header-phone a {
+  color: #2c3e50;
+  /* Culoare mai închisă pentru text */
+  text-decoration: none;
+  white-space: nowrap;
+  font-weight: 600;
+  /* Text puțin mai îngroșat */
+  font-size: 0.95em;
+  /* Mărime ușor mai mică */
+  letter-spacing: 0.3px;
+  /* Spațiere între litere */
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Tranziție mai fină */
+  display: inline-block;
+  vertical-align: middle;
+  direction: ltr;
+  unicode-bidi: bidi-override;
+  margin-right: 0;
+  margin-left: 5px;
+  text-align: left;
+  order: -1;
+  background: rgba(255, 255, 255, 0.9);
+  /* Fundal semi-transparent */
+  padding: 4px 10px;
+  /* Padding pentru a oferi spațiu în jurul textului */
+  border-radius: 15px;
+  /* Colțuri rotunjite */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Umbră subtilă */
+  transform: translateX(-5px);
+  /* Poziționare inițială ușor la stânga */
+}
+
+.header-phone:hover {
+  color: #2c3e50;
+}
+
+.header-phone:hover a {
+  opacity: 1;
+  width: auto;
+  margin-right: 8px;
+  margin-left: 0;
+  transform: translateX(0);
+  /* Anulează translația inițială */
+  transition-delay: 0.1s;
+  /* Mic delay pentru efect mai vizibil */
+}
+
+.header-phone:hover .phone-icon {
+  background-color: #2c3e50;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Ajustări pentru alinierea în containerul părinte */
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  /* Reducem spațiul dintre elemente */
+}
+
+/* Stiluri pentru bara de căutare */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 8px 35px 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+  width: 200px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #2c3e50;
+  box-shadow: 0 0 5px rgba(44, 62, 80, 0.2);
+  width: 220px;
+}
+
+.search-btn {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn:hover {
+  color: #2c3e50;
+}
+
+/* Stil pentru evidențierea textului găsit */
+.highlight {
+  background-color: #ffeb3b;
+  color: #000;
+  padding: 0 2px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  animation: highlight-fade 3s ease-in-out;
+}
+
+
+/* Asigură-te că textul evidențiat rămâne vizibil */
+.project-info .highlight,
+.project-content .highlight {
+  display: inline;
+  padding: 0 2px;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin-right: 10px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  color: #333;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  /* Asigură că nu există sublinieri */
+  outline: none;
+  /* Elimină outline-ul la focus */
+}
+
+.social-link:hover {
+  background-color: #2c3e50;
+  color: white;
+  text-decoration: none;
+  /* Asigură că nu există sublinieri la hover */
+  text-decoration: none;
+  /* Elimină liniuța de sub iconițe */
+}
+
+.logo {
+  height: 40px;
+  /* Ajustează înălțimea după nevoie */
+  width: auto;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+  align-items: center;
+}
+
+/* Stiluri de bază pentru butoane */
+.btn {
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+/* Stil pentru butonul de devis - starea normala */
+.devis-btn {
+  background-color: #2c3e50;
+  color: white !important;
+  border: 1px solid #2c3e50;
+  transform: translateY(-1px);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Stil la hover pentru butonul de devis - animatie de marire */
+.devis-btn:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Stil pentru celelalte butoane (pastrat ca inainte) */
+.btn:not(.devis-btn) {
+  background-color: transparent;
+  color: #2c3e50;
+  border: 1px solid #d7dadd;
+}
+
+.btn:not(.devis-btn):hover {
+  background-color: #2c3e50;
+  color: white !important;
+  border-color: #2c3e50;
+}
+
+/* Stiluri pentru hover pe ambele butoane */
+.contact-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  right: 0;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  background-color: #fff;
+  box-sizing: border-box;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal.open {
+  transform: translateX(0);
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Asigură-te că modal-ul are aceeași lățime cu right-small */
+.right-small {
+  position: relative;
+  width: 100%;
+}
+
+.company-details {
+  flex: 1;
+  overflow-y: auto;
+  margin: 0 -30px;
+  padding: 0 30px;
+}
+
+.contact-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+  overflow-y: auto;
+}
+
+/* Adjust form elements to be more compact */
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  min-height: 80px;
+}
+
+.submit-btn {
+  padding: 12px 25px;
+  font-size: 16px;
+  margin-top: 20px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  background-color: #1a252f;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* .overlay.active {
+  display: block;
+  z-index: 1;
+} */
+
+
+.close-modal {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-modal:hover {
+  color: #2c3e50;
+}
+
+/* Company Details */
+.company-details {
+  margin: 0;
+  padding: 15px 20px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border-left: 4px solid #2c3e50;
+}
+
+.company-details h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  font-size: 1.1em;
+}
+
+.detail-item {
+  margin-bottom: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.4;
+  font-size: 0.95em;
+}
+
+.detail-label {
+  font-weight: 600;
+  min-width: 150px;
+  color: #555;
+  flex: 0 0 auto;
+}
+
+.detail-value {
+  flex: 1;
+  color: #333;
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* File Input Styles */
+.file-input {
+  width: 100%;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.file-info {
+  margin-top: 5px;
+  font-size: 0.85em;
+  color: #666;
+}
+
+.file-input::-webkit-file-upload-button {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.file-input::-webkit-file-upload-button:hover {
+  background-color: #e9e9e9;
+}
+
+
+.contact-form h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #2c3e50;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.1);
+}
+
+.submit-btn {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #1a2d3d;
+}
+
+
+
+
+/* Stilizare container principal */
+.main-container {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+  padding: 0 20px 20px 20px;
+  gap: 8px;
+  background-color: transparent;
+}
+
+/* Stiluri pentru bulinele de navigare a caruselului */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 25;
+  margin-bottom: 10px;
+  padding: 15px 0;
+  background-color: transparent;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid #d7dadd;
+  padding: 0;
+  margin: 0 2px;
+}
+
+.carousel-dot:hover {
+  background-color: #fefeff;
+}
+
+.carousel-dot.active {
+  background-color: #ffffff;
+  transform: scale(1.3);
+  border-color: transparent;
+}
+
+/* Stilizare container stânga mare */
+.left-large {
+  width: var(--golden-ratio);
+  height: auto;
+  background-color: var(--color-primary);
+  color: var(--text-light);
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Stilizare container dreapta mic */
+.right-small {
+  width: var(--golden-ratio-small);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Stilizare container dreapta sus mare */
+.top-large {
+  position: relative;
+  height: var(--golden-ratio);
+  background-color: #5d6d8a;
+  background-image: linear-gradient(45deg, #60708d 25%, transparent 25%),
+    linear-gradient(-45deg, #60708d 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #60708d 75%),
+    linear-gradient(-45deg, transparent 75%, #60708d 75%);
+  background-size: 60px 60px;
+  background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+  padding: 20px 0px 0px 30px;
+  color: var(--text-light);
+  overflow: hidden;
+  flex-direction: column;
+  display: flex;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Tabs styling */
+.tabs-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 10px;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 8px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tab-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tab-button.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+}
+
+/* ===========================================
+   CONTAINERE ȘI SECȚIUNI
+   =========================================== */
+
+/* Stiluri comune pentru containerele principale */
+#services,
+#about {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  color: var(--text-light);
+  overflow-y: auto;
+  width: 100%;
+  max-height: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Ascunde bara de derulare în browsere WebKit */
+#services::-webkit-scrollbar,
+#about::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===========================================
+   ELEMENTE DE CONȚINUT
+   =========================================== */
+
+/* Stiluri comune pentru card-uri de conținut */
+.service,
+.about {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 0;
+  margin-top: 10px;
+}
+
+/* Stiluri pentru containere */
+.services-container,
+.about-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0 0 20px 0;
+  overflow-y: auto;
+  max-height: 100%;
+  flex: 1;
+  position: relative;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.services-container::-webkit-scrollbar,
+.about-section::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
+}
+
+/* Stilizare container dreapta jos mic */
+.bottom-small {
+  height: var(--golden-ratio-small);
+  gap: 20px;
+  /* Spațiul dintre containere */
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Asigură că elementele copil respectă proporția de aur */
+.bottom-small>* {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  /* Previne depășirea containerului părinte */
+}
+
+/* Container stânga (mic) - 38.2% din lățimea disponibilă */
+.bottom-small> :first-child {
+  flex: 0 0 calc(38.2% - var(--gap) * 0.382);
+  max-width: calc(38.2% - var(--gap) * 0.382);
+}
+
+/* Container dreapta (mare) - 61.8% din lățimea disponibilă */
+.bottom-small> :last-child {
+  flex: 0 0 calc(61.8% - var(--gap) * 0.618);
+  max-width: calc(61.8% - var(--gap) * 0.618);
+}
+
+/* Stilizare container stânga jos mic */
+.left-small {
+  width: var(--golden-ratio-small);
+  background-color: transparent;
+  padding: 0;
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* Asigură că containerul se poate micșora sub conținut */
+}
+
+/* Stilizare butoane din containerul stânga jos */
+.left-small .collaborator-btn,
+.left-small .partner-btn {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 60px;
+  /* Asigură o înălțime minimă pentru butoane */
+}
+
+.left-small .collaborator-btn i,
+.left-small .partner-btn i {
+  flex-shrink: 0;
+}
+
+.left-small .collaborator-name,
+.left-small .partner-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  max-width: 100%;
+  line-height: 1.2;
+  margin: 0 auto;
+  padding: 0 5px;
+}
+
+.section-tabs {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 15px;
+}
+
+.section-tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #888;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.section-tab.active {
+  color: #2c3e50;
+  border-bottom-color: #2c3e50;
+}
+
+.tab-panels {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tab-panel {
+  display: none;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Stiluri pentru grila de butoane */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-items: center;
+}
+
+/* Stiluri pentru iconițele din butoane */
+.grid-btn i,
+.grid-btn i:before,
+.grid-btn i:after,
+.grid-btn i * {
+  /* Elimină orice stil care ar putea crea cercuri */
+  border-radius: 0 !important;
+  background: none !important;
+  border: none !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  margin: 0 0 8px 0 !important;
+  position: static !important;
+}
+
+.grid-btn i {
+  font-size: 1.4em;
+  color: #4a5568;
+  margin: 0 0 8px 0;
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Stări hover și active pentru butoane */
+.grid-btn:hover,
+.grid-btn.active {
+  border-color: #2c3e50;
+  background-color: #f8f9fa;
+}
+
+.grid-btn:hover i,
+.grid-btn.active i {
+  color: #2c3e50;
+}
+
+.grid-btn:hover .btn-text,
+.grid-btn.active .btn-text {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Clase specifice pentru fiecare tip de buton */
+.partners-grid,
+.collaborators-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-items: center;
+}
+
+.partner-btn,
+.collaborator-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  aspect-ratio: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Consolidated icon styles above */
+
+/* Name styles consolidated above */
+
+/* Stări hover și active */
+.partner-btn:hover,
+.partner-btn.active,
+.collaborator-btn:hover,
+.collaborator-btn.active {
+  border-color: #2c3e50;
+  background-color: #f8f9fa;
+}
+
+.partner-btn:hover i,
+.partner-btn.active i,
+.collaborator-btn:hover i,
+.collaborator-btn.active i {
+  background-color: #2c3e50;
+  color: white;
+  border-color: #2c3e50;
+}
+
+.partner-btn:hover .partner-name,
+.partner-btn.active .partner-name,
+.collaborator-btn:hover .collaborator-name,
+.collaborator-btn.active .collaborator-name {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Stiluri de bază pentru ambele tipuri de conținut */
+.partner-content,
+.collaborator-content {
+  display: none;
+  height: 100%;
+  box-sizing: border-box;
+  background: transparent;
+  border-radius: 8px;
+  padding: 7px;
+  line-height: 1.7;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Stiluri pentru paragrafe */
+.partner-content p,
+.collaborator-content p {
+  margin: 0 0 15px 0;
+  color: #555;
+  /* font-size: 1.05em; */
+  line-height: 1.6;
+}
+
+
+/* Stiluri pentru carusel */
+.partner-content ul,
+.collaborator-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+/* Stiluri pentru elemente de listă */
+.partner-content li,
+.collaborator-content li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  color: #4a5568;
+  font-size: 0.95em;
+  line-height: 1.6;
+  transition: color 0.2s ease;
+}
+
+/* Stiluri la hover pentru elementele de listă */
+.partner-content li:hover,
+.collaborator-content li:hover {
+  color: #2c3e50;
+}
+
+/* Buline personalizate pentru liste */
+.partner-content li::before,
+.collaborator-content li::before {
+  content: "•";
+  color: #4a90e2;
+  font-weight: bold;
+  font-size: 1.4em;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+/* Stiluri pentru conținut activ */
+.partner-content.active,
+.collaborator-content.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Stilizare tab-uri active */
+.section-tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #888;
+  border-bottom: 3px solid transparent;
+}
+
+.section-tab.active {
+  background-color: transparent;
+  border-bottom: 3px solid #2c3e50;
+  color: #2c3e50;
+}
+
+.tab-panel {
+  display: none;
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+
+}
+
+.tab-panel.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.partner-content h3,
+.collaborator-content h3 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.4em;
+  font-weight: 600;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 8px;
+}
+
+/* Paragraph styles are now consolidated in the main rule above */
+
+/* Stilizare container dreapta jos mare */
+.right-large {
+  width: var(--golden-ratio);
+  background-color: transparent;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.right-large::-webkit-scrollbar {
+  display: none;
+}
+
+.right-large p {
+  color: #444;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* Stiluri comune pentru butoanele de parteneri și colaboratori */
+.partner-btn,
+.collaborator-btn {
+  border: 2px solid #d7dadd;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Consolidated button icon styles */
+.partner-btn i,
+.collaborator-btn i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  color: #4a5568;
+  background: none !important;
+  border: none !important;
+  width: auto !important;
+  height: auto !important;
+  line-height: 1 !important;
+  min-width: auto !important;
+  min-height: auto !important;
+}
+
+/* Consolidated name styles for partners and collaborators */
+.partner-name,
+.collaborator-name {
+  font-size: 0.7em !important;
+  color: #4a5568;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.3;
+  text-transform: uppercase;
+  /* letter-spacing: 0.5px; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  margin: 0;
+}
+
+/* Hover and active states for collaborator buttons */
+/* Hover and active states for collaborator buttons */
+.collaborator-btn:hover,
+.collaborator-btn.active {
+  border-color: #2c3e50;
+  background-color: #f0f4f8;
+}
+
+.collaborator-btn:hover i,
+.collaborator-btn.active i {
+  color: #2c3e50;
+  border-color: #2c3e50;
+  background: #f0f4f8;
+}
+
+.collaborator-btn:hover .collaborator-name,
+.collaborator-btn.active .collaborator-name {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.collaborator-btn.active i {
+  background: none !important;
+  color: #4a5568 !important;
+  border: none !important;
+}
+
+
+
+
+
+.partner-content h3,
+.collaborator-content h3 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.4em;
+  font-weight: 600;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+/* Stiluri pentru ecrane mici */
+.collaborator-btn i {
+  width: 40px;
+  height: 40px;
+  font-size: 1em;
+}
+
+.collaborator-content li {
+  font-size: 0.9em;
+  margin-bottom: 8px;
+}
+
+/* Stilurile pentru paragrafe sunt acum definite global */
+
+/* Stilizare pentru toate containerele principale */
+.left-large,
+.top-large,
+.left-small,
+.right-large {
+  border-radius: var(--border-radius);
+}
+
+/* Stiluri pentru punctele de navigare fullscreen */
+.carousel-dots-fullscreen {
+    display: none; /* Ascunde implicit, va fi afișat doar în modul fullscreen */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    z-index: 2147483647;
+    padding: 15px 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    height: 60px; /* Înălțime fixă pentru a asigura vizibilitatea */
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+body.carousel-fullscreen-active .carousel-dots-fullscreen,
+.carousel-fullscreen .carousel-dots-fullscreen {
+    display: flex;
+    opacity: 1;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Asigură-te că punctele sunt vizibile peste imaginile din carusel */
+body.carousel-fullscreen-active .carousel-dots-fullscreen {
+    z-index: 2147483647;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Asigură-te că punctele sunt vizibile peste imaginile din carusel */
+.carousel-dots-fullscreen .carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 8px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.carousel-dots-fullscreen .carousel-dot:hover,
+.carousel-dots-fullscreen .carousel-dot.active {
+    background-color: #fff;
+    transform: scale(1.3);
+}
+
+.carousel-dots-fullscreen .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 6px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.carousel-dots-fullscreen .carousel-dot:hover,
+.carousel-dots-fullscreen .carousel-dot.active {
+    background-color: #fff;
+    transform: scale(1.2);
+}
+
+/* Ajustări pentru carusel în modul fullscreen */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.fullscreen-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 30;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.fullscreen-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+.fullscreen-btn i {
+  font-size: 16px;
+}
+
+/* Stil pentru modul fullscreen */
+:fullscreen .carousel-wrapper,
+:fullscreen .carousel,
+:fullscreen .carousel-container,
+:fullscreen .carousel img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain;
+}
+
+:fullscreen .fullscreen-btn {
+  top: 30px;
+  right: 30px;
+}
+
+:fullscreen .fullscreen-btn i::before {
+  content: '\f066';
+  /* Iconița de minimize */
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  /* Adăugăm o tranziție smooth de 0.8 secunde */
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid transparent;
+  /* Adăugăm un border transparent pentru a evita saltul la hover */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1em;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  outline: none;
+}
+
+/* Stiluri pentru butoanele de carusel */
+.carousel-button.prev {
+  left: 15px;
+}
+
+.carousel-button.next {
+  right: 15px;
+}
+
+/* Stiluri la hover și active */
+.carousel-button:hover {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.carousel-button:active {
+  transform: none;
+}
+
+/* Stilizare iconițe pentru butoanele de carusel */
+.carousel-button i {
+  font-size: 20px;
+  color: white;
+  display: block;
+}
+
+
+/* Stilizare scrollbar pentru Chrome, Safari și Opera */
+.tabs-container .tab-content::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.tabs-container .tab-content::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+  margin: 4px 0;
+}
+
+.tabs-container .tab-content::-webkit-scrollbar-thumb {
+  background-color: #d7dadd;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.tabs-container .tab-content::-webkit-scrollbar-thumb:hover {
+  background-color: #b0b8bc;
+}
+
+/* Specificitate mai mare pentru ID-uri */
+#services,
+#about,
+#terms {
+  max-height: 70vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d7dadd transparent;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  padding-right: 8px;
+}
+
+/* Stilizare scrollbar pentru ID-uri specifice */
+#services::-webkit-scrollbar,
+#about::-webkit-scrollbar,
+#terms::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+#services::-webkit-scrollbar-track,
+#about::-webkit-scrollbar-track,
+#terms::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+  margin: 4px 0;
+}
+
+#services::-webkit-scrollbar-thumb,
+#about::-webkit-scrollbar-thumb,
+#terms::-webkit-scrollbar-thumb {
+  background-color: #d7dadd;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+#services::-webkit-scrollbar-thumb:hover,
+#about::-webkit-scrollbar-thumb:hover,
+#terms::-webkit-scrollbar-thumb:hover {
+  background-color: #b0b8bc;
+}
+
+/* Indicator de scroll */
+.scroll-indicator {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  margin-left: -50px;
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 20px;
+  text-align: center;
+}
+
+.scroll-indicator i {
+  display: block;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}

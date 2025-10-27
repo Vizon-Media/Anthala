@@ -1,0 +1,496 @@
+/* Mobile styles (max-width: 767px) */
+@media screen and (max-width: 767px) {
+
+  .site-header {
+    width: 100%;
+    height: 8svh;
+    background-color: transparent;
+    color: black;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .logo {
+    height: 5vh;
+    width: auto;
+    max-width: 200px;
+  }
+
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 10px;
+  }
+
+  .header-buttons {
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    /* Important pentru a întinde copiii */
+  }
+
+  .btn {
+    padding: auto;
+    /* Reducem padding-ul orizontal pe mobil */
+  }
+
+  .header-content {
+    align-items: stretch;
+    padding: 5px 10px;
+  }
+
+  .header-right {
+    align-items: stretch;
+  }
+
+  .header-buttons {
+    height: 100%;
+  }
+
+  .devis-btn {
+    padding: 0 12px;
+    font-size: 0.85em;
+  }
+
+
+  .bottom-small {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100svh;
+    width: 100%;
+    padding: 15px 15px 50px 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    gap: 0px;
+  }
+
+  /* Carousel Overlay */
+  .carousel-overlay {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    text-align: left;
+    color: rgb(255, 255, 255);
+    z-index: 5;
+    background-color: transparent;
+    padding: 2rem;
+    max-width: 100%;
+  }
+
+  .carousel-overlay h1 {
+    font-size: 2em;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    box-sizing: border-box;
+    word-break: break-word;
+  }
+
+  .carousel-overlay p {
+    white-space: normal;
+  }
+
+  .carousel-overlay p br {
+    display: none;
+  }
+
+
+  .social-links {
+    display: none;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+
+  .modal {
+    width: 100% !important;
+    right: 0;
+    left: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+  }
+
+  .modal.open {
+    transform: translateX(0);
+  }
+
+  .modal-content {
+    padding: 50px 20px 40px;
+    position: relative;
+    width: 95%;
+    margin: 10px auto;
+  }
+
+  .close-modal {
+    position: fixed;
+    top: 15px;
+    right: 10px;
+    font-size: 28px;
+    z-index: 1001;
+  }
+
+  #devisForm,
+  #contactForm {
+    padding-bottom: 20px;
+  }
+
+  .main-container {
+    flex-direction: column;
+    height: auto;
+    gap: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .left-large {
+    width: 100% !important;
+    height: 85svh !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .right-small {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 0;
+    box-shadow: none;
+    gap: 0;
+  }
+
+  .top-large {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    height: 100svh;
+  }
+
+  .project-button {
+    font-size: 0.6em;
+    padding: 8px 4px;
+    margin: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: center;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.2;
+  }
+
+  .tabs-container,
+  .section-tabs {
+    height: auto;
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 1px;
+  }
+
+  .tab-button {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .tab-panel {
+    display: none;
+    height: auto;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .tabs-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px;
+  }
+
+  .tabs-container::-webkit-scrollbar,
+  .section-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .resizer,
+  .carousel-button.next,
+  .carousel-button.prev {
+    display: none;
+  }
+
+  .projects-buttons-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 5px 5px 0;
+    gap: 1px;
+    width: 100%;
+    white-space: nowrap;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .projects-buttons-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    font-size: 0.75em;
+    white-space: nowrap;
+    height: 30px;
+    border-radius: 4px 4px 0 0;
+    min-width: auto;
+    width: auto;
+    flex: 0 0 auto;
+    margin: 0 2px;
+  }
+
+  .project-button.active {
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+
+  .project-button span {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .left-small {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 50svh;
+  }
+
+  .right-large {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 50svh;
+  }
+
+  .tab-content,
+  .collaborator-content,
+  .partner-content {
+    padding: 10px;
+    max-height: none !important;
+    overflow-y: visible;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .tab-content.fade-in-up {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100vw;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+  .tab-content.fade-in-up>* {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #services,
+  #about,
+  #terms {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+
+  .carousel-wrapper {
+    position: absolute;
+  }
+
+  .project-info-container p {
+    font-size: 12px;
+  }
+
+  .carousel-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #000;
+    overflow: hidden;
+    min-height: 40vh;
+  }
+
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .carousel-nav {
+    padding: 5px 0;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .carousel-dot.active {
+    background-color: #fff;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  footer {
+    padding: 15px 10px;
+    text-align: center;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .mobile-footer {
+    height: 7svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  body {
+    padding-bottom: 5vh;
+  }
+
+  .footer-phone {
+    margin-bottom: 8px;
+    font-size: 0.9em;
+  }
+
+  .footer-phone a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .footer-phone i {
+    margin-right: 5px;
+    color: #2c3e50;
+  }
+
+  .footer-social-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-social-links .social-link {
+    color: #2c3e50;
+    font-size: 1.2em;
+    transition: color 0.2s ease;
+  }
+
+  .footer-social-links .social-link:hover {
+    color: #1a73e8;
+  }
+
+  /* Add padding to main content to prevent footer overlap */
+  body {
+    padding-bottom: 100px;
+  }
+}
+
+
+.bottom-small>* {
+  width: 100%;
+  /* Toate elementele copil ocupă toată lățimea */
+  margin: 5px 0;
+  /* Spațiu vertical între elemente */
+  box-sizing: border-box;
+}
+
+
+/* Asigură-te că imaginile se scalează corespunzător */
+.bottom-small img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

@@ -1,0 +1,63 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+/dist
+/build
+.cache/
+.temp/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Test files
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+
+# Cache and local files
+.cache/
+.temp/
+*.tmp
+*~
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
