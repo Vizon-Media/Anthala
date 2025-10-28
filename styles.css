@@ -41,6 +41,7 @@
 html,
 body {
   height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -763,7 +764,8 @@ img {
 
 .logo {
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+  opacity: 0.8;
 }
 
 .logo:hover {
@@ -983,7 +985,6 @@ img {
 
 .logo {
   height: 40px;
-  /* Ajustează înălțimea după nevoie */
   width: auto;
 }
 
@@ -1291,14 +1292,13 @@ img {
 
 
 
-
 /* Stilizare container principal */
 .main-container {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   height: calc(100vh - 60px);
   overflow: hidden;
-  padding: 0 20px 20px 20px;
+  padding: 0 0 20px 0;
   gap: 8px;
   background-color: transparent;
 }
@@ -1345,7 +1345,7 @@ img {
   color: var(--text-light);
   padding: 0;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
 }
 
 /* Stilizare container dreapta mic */
@@ -1373,7 +1373,7 @@ img {
   overflow: hidden;
   flex-direction: column;
   display: flex;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
 }
 
 /* Tabs styling */
@@ -1475,11 +1475,13 @@ img {
 /* Stilizare container dreapta jos mic */
 .bottom-small {
   height: var(--golden-ratio-small);
-  gap: 20px;
-  /* Spațiul dintre containere */
   display: flex;
   position: relative;
   overflow: hidden;
+  padding: 0 20px 0 0;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Asigură că elementele copil respectă proporția de aur */
@@ -1491,15 +1493,30 @@ img {
 }
 
 /* Container stânga (mic) - 38.2% din lățimea disponibilă */
-.bottom-small> :first-child {
-  flex: 0 0 calc(38.2% - var(--gap) * 0.382);
-  max-width: calc(38.2% - var(--gap) * 0.382);
+.bottom-small > :first-child {
+  flex: 0 0 38.2%;
+  max-width: 38.2%;
+  position: relative;
 }
 
 /* Container dreapta (mare) - 61.8% din lățimea disponibilă */
-.bottom-small> :last-child {
-  flex: 0 0 calc(61.8% - var(--gap) * 0.618);
-  max-width: calc(61.8% - var(--gap) * 0.618);
+.bottom-small > :last-child {
+  flex: 0 0 61.8%;
+  max-width: 61.8%;
+  position: relative;
+}
+
+/* Media query pentru desktop - asigură raportul de aur doar pe ecrane mari */
+@media screen and (min-width: 768px) {
+  .bottom-small > :first-child {
+    flex: 0 0 38.2%;
+    max-width: 38.2%;
+  }
+  
+  .bottom-small > :last-child {
+    flex: 0 0 61.8%;
+    max-width: 61.8%;
+  }
 }
 
 /* Stilizare container stânga jos mic */
@@ -1963,11 +1980,20 @@ img {
 /* Stilurile pentru paragrafe sunt acum definite global */
 
 /* Stilizare pentru toate containerele principale */
-.left-large,
+/* .left-large,
 .top-large,
 .left-small,
 .right-large {
   border-radius: var(--border-radius);
+} */
+
+
+.left-large{
+  border-radius: 0 20px 20px 0;
+}
+
+.top-large{
+  border-radius: 20px 0 0 20px;
 }
 
 /* Stiluri pentru punctele de navigare fullscreen */

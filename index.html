@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anthala - Construction and Renovation</title>
   <!-- Favicon for modern browsers with dark theme support -->
-  <link rel="icon" type="image/svg+xml" href="Content\Favicon_dark.svg" media="(prefers-color-scheme: light)" />
-  <link rel="icon" type="image/svg+xml" href="Content\Favicon_light.svg" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/svg+xml" href="Content\Anthala favicon black.svg" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/svg+xml" href="Content\Anthala favicon white.svg" media="(prefers-color-scheme: dark)" />
 
   <!-- Alternative favicon for older browsers -->
   <!-- <link rel="icon" type="image/png" href="Content/favicon-32x32.png" sizes="32x32">
@@ -25,6 +25,7 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="responsive.css" />
@@ -34,7 +35,7 @@
 <body>
   <header class="site-header">
     <div class="header-content">
-      <img src="Content/Logo Anthala.svg" alt="Anthala Logo" class="logo" loading="lazy" />
+      <img src="Content/Logo black.svg" alt="Anthala Logo" class="logo" loading="lazy" />
       <div class="header-right">
         <!-- <div class="search-container">
           <input type="text" id="searchInput" placeholder="Search..." class="search-input">
@@ -45,7 +46,7 @@
         <div class="social-links">
           <div class="header-phone">
             <i class="fas fa-phone"></i>
-            <a href="tel:+33663943753">+33 6 63 94 37 53</a>
+            <a href="tel:+447435401638">+44 7435 401638</a>
           </div>
           <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -77,15 +78,15 @@
               <h3>Send us a message</h3>
               <div class="form-group required">
                 <label for="name">Full Name <span class="required-asterisk">*</span></label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" autocomplete="name" required>
               </div>
               <div class="form-group required">
                 <label for="email">Email <span class="required-asterisk">*</span></label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" autocomplete="email" required>
               </div>
               <div class="form-group">
                 <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject">
+                <input type="text" id="subject" name="subject" autocomplete="off">
               </div>
               <div class="form-group required">
                 <label for="message">Message <span class="required-asterisk">*</span></label>
@@ -169,26 +170,26 @@
 
               <div class="form-group required">
                 <label for="devisName">Full Name <span class="required-asterisk">*</span></label>
-                <input type="text" id="devisName" name="name" required placeholder="Your full name" pattern=".{3,}"
+                <input type="text" id="devisName" name="name" autocomplete="name" required placeholder="Your full name" pattern=".{3,}"
                   title="Please enter at least 3 characters">
               </div>
 
               <div class="form-group required">
                 <label for="devisEmail">Email <span class="required-asterisk">*</span></label>
-                <input type="email" id="devisEmail" name="email" required placeholder="your@email.com"
+                <input type="email" id="devisEmail" name="email" autocomplete="email" required placeholder="your@email.com"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
               </div>
 
               <div class="form-group required">
-                <label for="devisPhone">Phone <span class="required-asterisk">*</span></label>
-                <input type="tel" id="devisPhone" name="phone" required placeholder="Your phone number"
+                <label for="devisPhone">Phone Number <span class="required-asterisk">*</span></label>
+                <input type="tel" id="devisPhone" name="phone" autocomplete="tel" required placeholder="Your phone number"
                   pattern="[0-9]{10,}"
                   title="Please enter a valid phone number (digits only, minimum 10)">
               </div>
 
               <div class="form-group">
                 <label for="devisAddress">Project address</label>
-                <input type="text" id="devisAddress" name="address">
+                <input type="text" id="devisAddress" name="address" autocomplete="street-address">
               </div>
 
               <div class="form-group required">
@@ -913,7 +914,7 @@
   <!-- Mobile Footer -->
   <footer class="mobile-footer">
     <div class="footer-social-links">
-      <a href="tel:+33663943753" class="social-link" aria-label="Call"><i class="fas fa-phone"></i></a>
+      <a href="tel:+447435401638" class="social-link" aria-label="Call +44 7435 401638"><i class="fas fa-phone"></i></a>
       <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
       <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>

@@ -1,3 +1,21 @@
+// Suprimă avertismentele specifice de preîncărcare
+const originalWarn = console.warn;
+console.warn = function(message) {
+    if (typeof message === 'string' && message.includes('was preloaded using link preload but not used')) {
+        return; // Ignoră acest mesaj specific
+    }
+    originalWarn.apply(console, arguments);
+};
+
+// Suprimă și alte mesaje similare care ar putea apărea
+const originalError = console.error;
+console.error = function(message) {
+    if (typeof message === 'string' && message.includes('was preloaded using link preload but not used')) {
+        return; // Ignoră acest mesaj specific
+    }
+    originalError.apply(console, arguments);
+};
+
 // Preload images for better performance
 const preloadImages = () => {
     const projectImages = document.querySelectorAll('.project-image[data-src]');
@@ -6,12 +24,16 @@ const preloadImages = () => {
     projectImages.forEach(img => {
         const src = img.getAttribute('data-src');
         if (src && !preloaded.has(src)) {
-            const link = document.createElement('link');
-            link.rel = 'preload';
+            // Adăugăm un mic delay pentru a evita preîncărcarea prea multor resurse deodată
+            setTimeout(() => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
             link.as = 'image';
-            link.href = src;
-            document.head.appendChild(link);
-            preloaded.add(src);
+                link.href = src;
+                document.head.appendChild(link);
+                preloaded.add(src);
+            }, 100); // 100ms între fiecare preîncărcare
         }
     });
 };
