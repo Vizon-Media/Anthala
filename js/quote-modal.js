@@ -142,11 +142,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Open default email client
-            const subject = `Cerere ofertă - ${formObject.serviceType}`;
-            const mailtoLink = `mailto:contact@dodi-innovatis.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            const subject = `Quote Request - ${formObject.serviceType}`;
+            const mailtoLink = `mailto:radu.tonu@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
             
             // Show success message and reset form
-            alert('Vă mulțumim pentru cererea de ofertă! Veți fi contactat în curând de unul dintre specialiștii noștri.');
+            alert('Thank you for your quote request! One of our specialists will contact you soon.');
             devisForm.reset();
             if (fileInfo) fileInfo.textContent = '';
             selectedFiles = [];

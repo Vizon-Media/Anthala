@@ -37,12 +37,6 @@
     <div class="header-content">
       <img src="Content/Logo black.svg" alt="Anthala Logo" class="logo" loading="lazy" />
       <div class="header-right">
-        <!-- <div class="search-container">
-          <input type="text" id="searchInput" placeholder="Search..." class="search-input">
-          <button class="search-btn" aria-label="Search">
-            <i class="fas fa-search"></i>
-          </button>
-        </div> -->
         <div class="social-links">
           <div class="header-phone">
             <i class="fas fa-phone"></i>
@@ -54,7 +48,7 @@
           <a href="#" class="social-link" id="emailSocialLink" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="header-buttons">
-          <button type="button" class="btn devis-btn" id="openDevisModal">Request a Quote</button>
+          <button type="button" class="btn quote-btn" id="openQuoteModal">Request a Quote</button>
         </div>
 
         <!-- Contact Modal -->
@@ -101,13 +95,13 @@
             </form>
           </div>
         </div>
-        <!-- Devis Modal -->
-        <div id="devisModal" class="modal">
+        <!-- Quote Modal -->
+        <div id="quoteModal" class="modal">
           <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h2>Request a Quote</h2>
 
-            <form id="devisForm" class="contact-form">
+            <form id="quoteForm" class="contact-form">
               <h3>Personalized Quote Request</h3>
 
               <!-- Service Selection -->
@@ -169,48 +163,48 @@
               </div>
 
               <div class="form-group required">
-                <label for="devisName">Full Name <span class="required-asterisk">*</span></label>
-                <input type="text" id="devisName" name="name" autocomplete="name" required placeholder="Your full name" pattern=".{3,}"
+                <label for="quoteName">Full Name <span class="required-asterisk">*</span></label>
+                <input type="text" id="quoteName" name="name" autocomplete="name" required placeholder="Your full name" pattern=".{3,}"
                   title="Please enter at least 3 characters">
               </div>
 
               <div class="form-group required">
-                <label for="devisEmail">Email <span class="required-asterisk">*</span></label>
-                <input type="email" id="devisEmail" name="email" autocomplete="email" required placeholder="your@email.com"
+                <label for="quoteEmail">Email <span class="required-asterisk">*</span></label>
+                <input type="email" id="quoteEmail" name="email" autocomplete="email" required placeholder="your@email.com"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
               </div>
 
               <div class="form-group required">
-                <label for="devisPhone">Phone Number <span class="required-asterisk">*</span></label>
-                <input type="tel" id="devisPhone" name="phone" autocomplete="tel" required placeholder="Your phone number"
+                <label for="quotePhone">Phone Number <span class="required-asterisk">*</span></label>
+                <input type="tel" id="quotePhone" name="phone" autocomplete="tel" required placeholder="Your phone number"
                   pattern="[0-9]{10,}"
                   title="Please enter a valid phone number (digits only, minimum 10)">
               </div>
 
               <div class="form-group">
-                <label for="devisAddress">Project address</label>
-                <input type="text" id="devisAddress" name="address" autocomplete="street-address">
+                <label for="quoteAddress">Project address</label>
+                <input type="text" id="quoteAddress" name="address" autocomplete="street-address">
               </div>
 
               <div class="form-group required">
-                <label for="devisMessage">Project details <span class="required-asterisk">*</span></label>
-                <textarea id="devisMessage" name="message" rows="5" required
+                <label for="quoteMessage">Project details <span class="required-asterisk">*</span></label>
+                <textarea id="quoteMessage" name="message" rows="5" required
                   placeholder="Describe your project in detail, including specifications, preferred materials, and any specific requirements..."
                   minlength="20"
                   title="Veuillez fournir plus de détails sur votre projet (au moins 20 caractères)"></textarea>
               </div>
 
               <div class="form-group">
-                <label for="devisFiles">Attached files (plans, photos, existing quotes)</label>
-                <input type="file" id="devisFiles" name="files" class="file-input" multiple>
+                <label for="quoteFiles">Attached files (plans, photos, existing quotes)</label>
+                <input type="file" id="quoteFiles" name="files" class="file-input" multiple>
                 <div class="file-info"></div>
                 <small class="file-hint">Accepted formats: JPG, PNG, PDF, DOC, DOCX, XLS, XLSX (max 10MB total)</small>
               </div>
 
               <div class="form-group required">
                 <div class="consent-checkbox">
-                  <input type="checkbox" id="devisConsent" name="consent" required>
-                  <label for="devisConsent">I agree to the use of my data to contact me regarding my quote request.
+                  <input type="checkbox" id="quoteConsent" name="consent" required>
+                  <label for="quoteConsent">I agree to the use of my data to contact me regarding my quote request.
                     <span class="required-asterisk">*</span></label>
                 </div>
               </div>
@@ -926,7 +920,7 @@
   <script src="fullscreen-fix.js" defer></script>
   <script src="script.js" defer></script>
   <script src="js/contact-modal.js" defer></script>
-  <script src="js/devis-modal.js" defer></script>
+  <script src="js/quote-modal.js" defer></script>
   <script src="js/resizer.js" defer></script>
 
   <!-- Preload for critical fonts -->
