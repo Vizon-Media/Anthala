@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Get modal elements
-    const modal = document.getElementById('devisModal');
-    const openBtn = document.getElementById('openDevisModal');
+    const modal = document.getElementById('quoteModal');
+    const openBtn = document.getElementById('openQuoteModal');
     const closeBtn = modal ? modal.querySelector('.close-modal') : null;
-    const devisForm = document.getElementById('devisForm');
+    const quoteForm = document.getElementById('quoteForm');
     
     // Create overlay element if it doesn't exist
     let overlay = document.querySelector('.overlay');
@@ -93,8 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Form submission
-    if (devisForm) {
-        devisForm.addEventListener('submit', function(e) {
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Get form data
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Show success message and reset form
             alert('Thank you for your quote request! One of our specialists will contact you soon.');
-            devisForm.reset();
+            quoteForm.reset();
             if (fileInfo) fileInfo.textContent = '';
             selectedFiles = [];
             
