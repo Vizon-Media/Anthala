@@ -109,10 +109,10 @@
                 <label for="serviceType">Service Type <span class="required-asterisk">*</span></label>
                 <select id="serviceType" name="serviceType" required>
                   <option value="" disabled selected>Select a service</option>
-                  <option value="renovare">INTERIOR & EXTERIOR RENOVATION</option>
-                  <option value="instalatii">ELECTRICAL & PLUMBING INSTALLATIONS</option>
-                  <option value="montaj">TILE, CERAMIC & PARQUET INSTALLATION</option>
-                  <option value="finisaje">FINISHES & PAINTING</option>
+                  <option value="renovation">INTERIOR & EXTERIOR RENOVATION</option>
+                  <option value="installations">ELECTRICAL & PLUMBING INSTALLATIONS</option>
+                  <option value="flooring">TILE, CERAMIC & PARQUET INSTALLATION</option>
+                  <option value="finishing">FINISHES & PAINTING</option>
                   <option value="altul">Other service</option>
                 </select>
               </div>
@@ -171,7 +171,7 @@
               <div class="form-group required">
                 <label for="quoteEmail">Email <span class="required-asterisk">*</span></label>
                 <input type="email" id="quoteEmail" name="email" autocomplete="email" required placeholder="your@email.com"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
+                  pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address">
               </div>
 
               <div class="form-group required">
@@ -191,7 +191,7 @@
                 <textarea id="quoteMessage" name="message" rows="5" required
                   placeholder="Describe your project in detail, including specifications, preferred materials, and any specific requirements..."
                   minlength="20"
-                  title="Veuillez fournir plus de détails sur votre projet (au moins 20 caractères)"></textarea>
+                  title="Please provide more details about your project (at least 20 characters)"></textarea>
               </div>
 
               <div class="form-group">

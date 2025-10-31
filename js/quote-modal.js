@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // File input handling
-    const fileInput = document.getElementById('devisFiles');
-    const fileInfo = document.querySelector('#devisModal .file-info');
+    const fileInput = document.getElementById('quoteFiles');
+    const fileInfo = document.querySelector('#quoteModal .file-info');
     let selectedFiles = [];
     const maxTotalSize = 10 * 1024 * 1024; // 10MB in bytes
 
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             if (totalSize > maxTotalSize) {
-                alert('Dimensiunea totală a fișierelor depășește 10MB. Vă rugăm selectați mai puține fișiere sau reduceți dimensiunea acestora.');
+                alert('Total file size exceeds 10MB. Please select fewer files or reduce their size.');
                 fileInput.value = '';
                 fileInfo.textContent = '';
                 selectedFiles = [];
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (files.length > 0) {
                 const fileNames = files.map(file => file.name).join(', ');
                 const totalSizeMB = (totalSize / 1024 / 1024).toFixed(2);
-                fileInfo.textContent = `${files.length} fișiere selectate (${totalSizeMB} MB): ${fileNames}`;
+                fileInfo.textContent = `${files.length} files selected (${totalSizeMB} MB): ${fileNames}`;
             } else {
                 fileInfo.textContent = '';
             }
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // Get form data
-            const formData = new FormData(devisForm);
+            const formData = new FormData(quoteForm);
             const formObject = {};
             formData.forEach((value, key) => {
                 formObject[key] = value;
@@ -109,14 +109,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const missingFields = requiredFields.filter(field => !formObject[field]);
             
             if (missingFields.length > 0) {
-                alert('Vă rugăm completați toate câmpurile obligatorii (marcate cu *).');
+                alert('Please fill in all required fields (marked with *).');
                 return;
             }
 
             // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
             if (!emailRegex.test(formObject.email)) {
-                alert('Vă rugăm introduceți o adresă de email validă.');
+                alert('Please enter a valid email address.');
                 return;
             }
 
@@ -128,17 +128,14 @@ document.addEventListener('DOMContentLoaded', function() {
             emailBody += `\n--- Detalii proiect ---\n`;
             emailBody += `Tip serviciu: ${document.querySelector('#serviceType option:checked').text}\n`;
             emailBody += `Tip proiect: ${document.querySelector('#projectType option:checked').text}\n`;
-            emailBody += `Suprafață: ${formObject.projectSize || 'Nespecificat'} m²\n`;
-            emailBody += `Detașament: ${formObject.timeline ? document.querySelector('#timeline option:checked').text : 'Nespecificat'}\n`;
-            emailBody += `\n--- Mesaj ---\n${formObject.message}\n\n`;
             
             // Add file info if any
             if (selectedFiles.length > 0) {
-                emailBody += `Fișiere atașate (${selectedFiles.length}):\n`;
+                emailBody += `Attached files (${selectedFiles.length}):\n`;
                 selectedFiles.forEach((file, index) => {
                     emailBody += `- ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)\n`;
                 });
-                emailBody += '\nNotă: Fișierele nu pot fi atașate direct prin acest formular. Vă rugăm să le atașați manual în clientul dumneavoastră de email.';
+                emailBody += '\nNote: Files cannot be attached directly through this form. Please attach them manually in your email client.';
             }
 
             // Open default email client
@@ -146,7 +143,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const mailtoLink = `mailto:radu.tonu@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
             
             // Show success message and reset form
-            alert('Thank you for your quote request! One of our specialists will contact you soon.');
+            const successMessage = document.createElement('div');
+            successMessage.className = 'success-message';
+            successMessage.textContent = 'Thank you for your request! Your message has been sent successfully.';
+            document.body.appendChild(successMessage);
+            
+            // Remove success message after 5 seconds
+            setTimeout(() => {
+                successMessage.remove();
+            }, 5000);
+            
             quoteForm.reset();
             if (fileInfo) fileInfo.textContent = '';
             selectedFiles = [];
