@@ -15,6 +15,35 @@
   --text-light: #fff;
 }
 
+/* Success message */
+.success-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  text-align: center;
+  white-space: pre-line;
+  max-width: 90%;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    top: -100px;
+    opacity: 0;
+  }
+  to {
+    top: 20px;
+    opacity: 1;
+  }
+}
+
 /* Legal information container */
 .legal-info-container {
   background-color: #f5f5f5;
@@ -41,6 +70,7 @@
 html,
 body {
   height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -763,7 +793,8 @@ img {
 
 .logo {
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+  opacity: 0.8;
 }
 
 .logo:hover {
@@ -891,64 +922,6 @@ img {
   /* Reducem spațiul dintre elemente */
 }
 
-/* Stiluri pentru bara de căutare */
-.search-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.search-input {
-  padding: 8px 35px 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  font-size: 14px;
-  width: 200px;
-  transition: all 0.3s ease;
-  outline: none;
-}
-
-.search-input:focus {
-  border-color: #2c3e50;
-  box-shadow: 0 0 5px rgba(44, 62, 80, 0.2);
-  width: 220px;
-}
-
-.search-btn {
-  position: absolute;
-  right: 8px;
-  background: none;
-  border: none;
-  color: #666;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.search-btn:hover {
-  color: #2c3e50;
-}
-
-/* Stil pentru evidențierea textului găsit */
-.highlight {
-  background-color: #ffeb3b;
-  color: #000;
-  padding: 0 2px;
-  border-radius: 3px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  font-weight: bold;
-  animation: highlight-fade 3s ease-in-out;
-}
-
-
-/* Asigură-te că textul evidențiat rămâne vizibil */
-.project-info .highlight,
-.project-content .highlight {
-  display: inline;
-  padding: 0 2px;
-}
 
 .social-links {
   display: flex;
@@ -983,7 +956,6 @@ img {
 
 .logo {
   height: 40px;
-  /* Ajustează înălțimea după nevoie */
   width: auto;
 }
 
@@ -1011,29 +983,28 @@ img {
   height: 100%;
 }
 
-/* Stil pentru butonul de devis - starea normala */
-.devis-btn {
+/* Stil pentru butonul de quote - starea normala */
+.quote-btn {
   background-color: #2c3e50;
   color: white !important;
   border: 1px solid #2c3e50;
-  transform: translateY(-1px);
   transition: all 0.2s ease-in-out;
 }
 
-/* Stil la hover pentru butonul de devis - animatie de marire */
-.devis-btn:hover {
+/* Stil la hover pentru butonul de quote - animatie de marire */
+.quote-btn:hover {
   transform: translateY(-1px) scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Stil pentru celelalte butoane (pastrat ca inainte) */
-.btn:not(.devis-btn) {
+.btn:not(.quote-btn) {
   background-color: transparent;
   color: #2c3e50;
   border: 1px solid #d7dadd;
 }
 
-.btn:not(.devis-btn):hover {
+.btn:not(.quote-btn):hover {
   background-color: #2c3e50;
   color: white !important;
   border-color: #2c3e50;
@@ -1291,14 +1262,13 @@ img {
 
 
 
-
 /* Stilizare container principal */
 .main-container {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   height: calc(100vh - 60px);
   overflow: hidden;
-  padding: 0 20px 20px 20px;
+  padding: 0 0 20px 0;
   gap: 8px;
   background-color: transparent;
 }
@@ -1345,7 +1315,7 @@ img {
   color: var(--text-light);
   padding: 0;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
 }
 
 /* Stilizare container dreapta mic */
@@ -1373,7 +1343,7 @@ img {
   overflow: hidden;
   flex-direction: column;
   display: flex;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
 }
 
 /* Tabs styling */
@@ -1475,11 +1445,13 @@ img {
 /* Stilizare container dreapta jos mic */
 .bottom-small {
   height: var(--golden-ratio-small);
-  gap: 20px;
-  /* Spațiul dintre containere */
   display: flex;
   position: relative;
   overflow: hidden;
+  padding: 0 20px 0 0;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Asigură că elementele copil respectă proporția de aur */
@@ -1491,15 +1463,30 @@ img {
 }
 
 /* Container stânga (mic) - 38.2% din lățimea disponibilă */
-.bottom-small> :first-child {
-  flex: 0 0 calc(38.2% - var(--gap) * 0.382);
-  max-width: calc(38.2% - var(--gap) * 0.382);
+.bottom-small > :first-child {
+  flex: 0 0 38.2%;
+  max-width: 38.2%;
+  position: relative;
 }
 
 /* Container dreapta (mare) - 61.8% din lățimea disponibilă */
-.bottom-small> :last-child {
-  flex: 0 0 calc(61.8% - var(--gap) * 0.618);
-  max-width: calc(61.8% - var(--gap) * 0.618);
+.bottom-small > :last-child {
+  flex: 0 0 61.8%;
+  max-width: 61.8%;
+  position: relative;
+}
+
+/* Media query pentru desktop - asigură raportul de aur doar pe ecrane mari */
+@media screen and (min-width: 768px) {
+  .bottom-small > :first-child {
+    flex: 0 0 38.2%;
+    max-width: 38.2%;
+  }
+  
+  .bottom-small > :last-child {
+    flex: 0 0 61.8%;
+    max-width: 61.8%;
+  }
 }
 
 /* Stilizare container stânga jos mic */
@@ -1963,11 +1950,20 @@ img {
 /* Stilurile pentru paragrafe sunt acum definite global */
 
 /* Stilizare pentru toate containerele principale */
-.left-large,
+/* .left-large,
 .top-large,
 .left-small,
 .right-large {
   border-radius: var(--border-radius);
+} */
+
+
+.left-large{
+  border-radius: 0 20px 20px 0;
+}
+
+.top-large{
+  border-radius: 20px 0 0 20px;
 }
 
 /* Stiluri pentru punctele de navigare fullscreen */

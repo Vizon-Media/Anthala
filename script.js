@@ -1,3 +1,21 @@
+// Suprimă avertismentele specifice de preîncărcare
+const originalWarn = console.warn;
+console.warn = function(message) {
+    if (typeof message === 'string' && message.includes('was preloaded using link preload but not used')) {
+        return; // Ignoră acest mesaj specific
+    }
+    originalWarn.apply(console, arguments);
+};
+
+// Suprimă și alte mesaje similare care ar putea apărea
+const originalError = console.error;
+console.error = function(message) {
+    if (typeof message === 'string' && message.includes('was preloaded using link preload but not used')) {
+        return; // Ignoră acest mesaj specific
+    }
+    originalError.apply(console, arguments);
+};
+
 // Preload images for better performance
 const preloadImages = () => {
     const projectImages = document.querySelectorAll('.project-image[data-src]');
@@ -6,12 +24,16 @@ const preloadImages = () => {
     projectImages.forEach(img => {
         const src = img.getAttribute('data-src');
         if (src && !preloaded.has(src)) {
-            const link = document.createElement('link');
-            link.rel = 'preload';
+            // Adăugăm un mic delay pentru a evita preîncărcarea prea multor resurse deodată
+            setTimeout(() => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
             link.as = 'image';
-            link.href = src;
-            document.head.appendChild(link);
-            preloaded.add(src);
+                link.href = src;
+                document.head.appendChild(link);
+                preloaded.add(src);
+            }, 100); // 100ms între fiecare preîncărcare
         }
     });
 };
@@ -71,180 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Pe mobil, adăugăm un mic delay suplimentar pentru a contracara orice ajustare de către browser
     if (isMobile) {
         setTimeout(scrollToTop, 300);
-    }
-    // Funcționalitate de căutare
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.querySelector('.search-btn');
-    
-    // Funcție pentru a înlocui textul cu marcaje pentru evidențiere
-    function highlightText(element, searchTerm) {
-        const text = element.textContent;
-        const regex = new RegExp(`(${searchTerm})`, 'gi');
-        
-        // Creăm un nou element span cu textul evidențiat
-        const newHTML = text.replace(regex, '<span class="highlight">$1</span>');
-        
-        // Dacă conținutul s-a schimbat, îl actualizăm
-        if (newHTML !== text) {
-            element.innerHTML = newHTML;
-            return true; // Returnăm true dacă am făcut modificări
-        }
-        return false; // Returnăm false dacă nu am făcut modificări
-    }
-    
-    // Funcție pentru a reseta evidențierea
-    function resetHighlights() {
-        document.querySelectorAll('.highlight').forEach(hl => {
-            const parent = hl.parentNode;
-            parent.replaceChild(document.createTextNode(hl.textContent), hl);
-            parent.normalize(); // Combină nodurile de text adiacente
-        });
-    }
-    
-    // Funcție pentru căutare
-    function performSearch() {
-        let searchTerm = searchInput.value.trim();
-        if (!searchTerm) return;
-        
-        // Resetăm evidențierea anterioară
-        resetHighlights();
-        
-        // Funcție pentru normalizare diacritice mai cuprinzătoare
-        function normalizeText(text) {
-            return text.toLowerCase()
-                .normalize('NFD')  // Descompune caracterele în bază + diacritice
-                .replace(/[\u0300-\u036f]/g, '') // Elimină toate diacriticele
-                .replace(/[^a-z0-9\s]/g, ''); // Păstrează doar litere, cifre și spații
-        }
-        
-        // Normalizăm termenul de căutare
-        const normalizedSearchTerm = normalizeText(searchTerm);
-        
-        // Elementele în care căutăm (inclusiv butoanele)
-        const searchableElements = document.querySelectorAll('.project-info, .project-button, .project-content, .project-description, p, li, h1, h2, h3, h4, h5, h6, button, .btn, .button, a[role="button"]');
-        const results = [];
-        
-        // Căutăm în conținut
-        searchableElements.forEach(element => {
-            // Normalizăm textul pentru comparație
-            const text = normalizeText(element.textContent);
-            
-            // Căutare flexibilă cu normalizare
-            const searchWords = normalizedSearchTerm.split(/\s+/).filter(Boolean);
-            let matchCount = 0;
-            
-            // Verificăm fiecare cuvânt din termenul de căutare
-            for (const word of searchWords) {
-                if (text.includes(word)) {
-                    matchCount++;
-                }
-            }
-            
-            // Dacă am găsit cel puțin un cuvânt care se potrivește
-            if (matchCount > 0) {
-                // Calculăm un scor de relevanță
-                const relevance = (matchCount / searchWords.length) * 100;
-                
-                // Găsim poziția primului cuvânt găsit
-                const firstWord = searchWords.find(word => text.includes(word));
-                const position = firstWord ? text.indexOf(firstWord) : -1;
-                
-                // Adăugăm la rezultate
-                results.push({
-                    element: element,
-                    text: text,
-                    position: position,
-                    relevance: relevance,
-                    searchTerm: searchTerm // Salvăm termenul original pentru evidențiere
-                });
-                
-                // Încercăm să evidențiem textul găsit
-                highlightText(element, searchTerm);
-            }
-        }); // Închiderea forEach-ului care lipsea
-        
-        // Sortăm rezultatele după relevanță
-        results.sort((a, b) => {
-            // Mai întâi după scorul de relevanță (descrescător)
-            if (b.relevance !== a.relevance) {
-                return b.relevance - a.relevance;
-            }
-            // Apoi după poziție (unde apare termenul în text)
-            return a.position - b.position;
-        });
-        
-        // Dacă nu am găsit exact, încercăm o potrivire parțială
-        if (results.length === 0) {
-            const searchTermCleaned = normalizedSearchTerm.replace(/[^a-z0-9]/g, '');
-            searchableElements.forEach(element => {
-                const elementText = normalizeText(element.textContent);
-                if (elementText.includes(searchTermCleaned)) {
-                    results.push({
-                        element: element,
-                        text: elementText,
-                        position: elementText.indexOf(searchTermCleaned),
-                        relevance: 50, // Scor mai mic decât potrivirile exacte
-                        searchTerm: searchTerm
-                    });
-                }
-            });
-        }
-        
-        console.log('Rezultate căutare:', results);
-        
-        if (results.length > 0) {
-            // Navigăm la primul rezultat
-            const firstResult = results[0].element;
-            firstResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Adăugăm un efect vizual pe toate elementele găsite
-            results.forEach((result, index) => {
-                const element = result.element;
-                const originalBg = element.style.backgroundColor;
-                const originalTransition = element.style.transition;
-                
-                // Adăugăm o tranziție pentru o animație mai fină
-                element.style.transition = 'background-color 0.5s ease';
-                
-                // Culori diferite pentru rezultate diferite
-                const colors = [
-                    'rgba(44, 62, 80, 0.2)',    // Primul rezultat - mai vizibil
-                    'rgba(44, 62, 80, 0.15)',   // Al doilea rezultat
-                    'rgba(44, 62, 80, 0.1)'     // Al treilea rezultat
-                ];
-                
-                const colorIndex = Math.min(index, colors.length - 1);
-                element.style.backgroundColor = colors[colorIndex];
-                
-                // Resetăm după 3 secunde
-                setTimeout(() => {
-                    element.style.backgroundColor = originalBg;
-                    element.style.transition = originalTransition;
-                }, 3000);
-            });
-        } else {
-            // Sugestii pentru căutări similare
-            const suggestions = [
-                'Încercați cu alte cuvinte cheie',
-                'Verificați dacă există greșeli de scriere',
-                'Căutați termeni mai generali'
-            ];
-            
-            const message = `Nu s-au găsit rezultate pentru: "${searchTerm}"\n\n${suggestions.join('\n')}`;
-            alert(message);
-        }
-    }
-    
-    // Adăugăm event listeners
-    if (searchInput && searchBtn) {
-        searchBtn.addEventListener('click', performSearch);
-        
-        // Căutare la apăsarea tastei Enter
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
     }
     // Variabile globale
     let currentProject = 0; // 0 = imaginile inițiale

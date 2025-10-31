@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anthala - Construction and Renovation</title>
-  <!-- Favicon pentru browsere moderne cu suport pentru tema întunecată -->
-  <link rel="icon" type="image/svg+xml" href="Content\Favicon_dark.svg" media="(prefers-color-scheme: light)" />
-  <link rel="icon" type="image/svg+xml" href="Content\Favicon_light.svg" media="(prefers-color-scheme: dark)" />
+  <!-- Favicon for modern browsers with dark theme support -->
+  <link rel="icon" type="image/svg+xml" href="Content\Anthala favicon black.svg" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/svg+xml" href="Content\Anthala favicon white.svg" media="(prefers-color-scheme: dark)" />
 
-  <!-- Favicon alternativ pentru browsere mai vechi -->
+  <!-- Alternative favicon for older browsers -->
   <!-- <link rel="icon" type="image/png" href="Content/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="Content/favicon-16x16.png" sizes="16x16"> -->
 
@@ -22,8 +22,10 @@
   <!-- MS Application Tiles -->
   <meta name="msapplication-TileColor" content="#2b5797" />
   <meta name="theme-color" content="#ffffff" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="responsive.css" />
@@ -33,18 +35,12 @@
 <body>
   <header class="site-header">
     <div class="header-content">
-      <img src="Content/Logo Anthala.svg" alt="Anthala Logo" class="logo" loading="lazy" />
+      <img src="Content/Logo black.svg" alt="Anthala Logo" class="logo" loading="lazy" />
       <div class="header-right">
-        <!-- <div class="search-container">
-          <input type="text" id="searchInput" placeholder="Search..." class="search-input">
-          <button class="search-btn" aria-label="Search">
-            <i class="fas fa-search"></i>
-          </button>
-        </div> -->
         <div class="social-links">
           <div class="header-phone">
             <i class="fas fa-phone"></i>
-            <a href="tel:+33663943753">+33 6 63 94 37 53</a>
+            <a href="tel:+447435401638">+44 7435 401638</a>
           </div>
           <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -52,7 +48,7 @@
           <a href="#" class="social-link" id="emailSocialLink" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="header-buttons">
-          <button type="button" class="btn devis-btn" id="openDevisModal">Request a Quote</button>
+          <button type="button" class="btn quote-btn" id="openQuoteModal">Request a Quote</button>
         </div>
 
         <!-- Contact Modal -->
@@ -62,13 +58,13 @@
             <h2>Contact Us</h2>
 
             <div class="legal-info-container">
-              <p><strong>Informații legale:</strong><br>
-                SIREN: 853 760 346<br>
-                SIRET (sediu): 853 760 346 00017<br>
-                Formă juridică: SAS, societate pe acțiuni simplificată<br>
-                Număr TVA: FR27853760346<br>
-                Înscris la RCS: ÎNREGISTRAT (la registrul de comerț din PONTOISE, la 12/09/2019)<br>
-                Număr RCS: 853 760 346 R.C.S. Pontoise
+              <p><strong>Legal information:</strong><br>
+                Anthala Ltd is an active company with the registered office located in Dagenham, Greater London.<br>
+                Incorporated 20 October 2025<br>
+                Administered by: Mr Victor Tonu<br>
+                Turnover is under £1M<br>
+                Balance sheet is under £500,000<br>
+                Under 10 employees
               </p>
             </div>
 
@@ -76,15 +72,15 @@
               <h3>Send us a message</h3>
               <div class="form-group required">
                 <label for="name">Full Name <span class="required-asterisk">*</span></label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" autocomplete="name" required>
               </div>
               <div class="form-group required">
                 <label for="email">Email <span class="required-asterisk">*</span></label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" autocomplete="email" required>
               </div>
               <div class="form-group">
                 <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject">
+                <input type="text" id="subject" name="subject" autocomplete="off">
               </div>
               <div class="form-group required">
                 <label for="message">Message <span class="required-asterisk">*</span></label>
@@ -99,13 +95,13 @@
             </form>
           </div>
         </div>
-        <!-- Devis Modal -->
-        <div id="devisModal" class="modal">
+        <!-- Quote Modal -->
+        <div id="quoteModal" class="modal">
           <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h2>Request a Quote</h2>
 
-            <form id="devisForm" class="contact-form">
+            <form id="quoteForm" class="contact-form">
               <h3>Personalized Quote Request</h3>
 
               <!-- Service Selection -->
@@ -113,10 +109,10 @@
                 <label for="serviceType">Service Type <span class="required-asterisk">*</span></label>
                 <select id="serviceType" name="serviceType" required>
                   <option value="" disabled selected>Select a service</option>
-                  <option value="renovare">INTERIOR & EXTERIOR RENOVATION</option>
-                  <option value="instalatii">ELECTRICAL & PLUMBING INSTALLATIONS</option>
-                  <option value="montaj">TILE, CERAMIC & PARQUET INSTALLATION</option>
-                  <option value="finisaje">FINISHES & PAINTING</option>
+                  <option value="renovation">INTERIOR & EXTERIOR RENOVATION</option>
+                  <option value="installations">ELECTRICAL & PLUMBING INSTALLATIONS</option>
+                  <option value="flooring">TILE, CERAMIC & PARQUET INSTALLATION</option>
+                  <option value="finishing">FINISHES & PAINTING</option>
                   <option value="altul">Other service</option>
                 </select>
               </div>
@@ -167,48 +163,49 @@
               </div>
 
               <div class="form-group required">
-                <label for="devisName">Full Name <span class="required-asterisk">*</span></label>
-                <input type="text" id="devisName" name="name" required placeholder="Your full name" pattern=".{3,}"
-                  title="Veuillez entrer au moins 3 caractères">
+                <label for="quoteName">Full Name <span class="required-asterisk">*</span></label>
+                <input type="text" id="quoteName" name="name" autocomplete="name" required placeholder="Your full name" pattern=".{3,}"
+                  title="Please enter at least 3 characters">
               </div>
 
               <div class="form-group required">
-                <label for="devisEmail">Email <span class="required-asterisk">*</span></label>
-                <input type="email" id="devisEmail" name="email" required placeholder="your@email.com"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Veuillez entrer une adresse email valide">
+                <label for="quoteEmail">Email <span class="required-asterisk">*</span></label>
+                <input type="email" id="quoteEmail" name="email" autocomplete="email" required placeholder="your@email.com"
+                  pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address">
               </div>
 
               <div class="form-group required">
-                <label for="devisPhone">Phone <span class="required-asterisk">*</span></label>
-                <input type="tel" id="devisPhone" name="phone" required placeholder="Your phone number"
+                <label for="quotePhone">Phone Number <span class="required-asterisk">*</span></label>
+                <input type="tel" id="quotePhone" name="phone" autocomplete="tel" required placeholder="Your phone number"
                   pattern="[0-9]{10,}"
-                  title="Veuillez entrer un numéro de téléphone valide (chiffres uniquement, minimum 10)">
+                  title="Please enter a valid phone number (digits only, minimum 10)">
               </div>
 
               <div class="form-group">
-                <label for="devisAddress">Project address</label>
-                <input type="text" id="devisAddress" name="address">
+                <label for="quoteAddress">Project address</label>
+                <input type="text" id="quoteAddress" name="address" autocomplete="street-address">
               </div>
 
               <div class="form-group required">
-                <label for="devisMessage">Project details <span class="required-asterisk">*</span></label>
-                <textarea id="devisMessage" name="message" rows="5" required
+                <label for="quoteMessage">Project details <span class="required-asterisk">*</span></label>
+                <textarea id="quoteMessage" name="message" rows="5" required
                   placeholder="Describe your project in detail, including specifications, preferred materials, and any specific requirements..."
                   minlength="20"
-                  title="Veuillez fournir plus de détails sur votre projet (au moins 20 caractères)"></textarea>
+                  title="Please provide more details about your project (at least 20 characters)"></textarea>
               </div>
 
               <div class="form-group">
-                <label for="devisFiles">Attached files (plans, photos, existing quotes)</label>
-                <input type="file" id="devisFiles" name="files" class="file-input" multiple>
+                <label for="quoteFiles">Attached files (plans, photos, existing quotes)</label>
+                <input type="file" id="quoteFiles" name="files" class="file-input" multiple>
                 <div class="file-info"></div>
                 <small class="file-hint">Accepted formats: JPG, PNG, PDF, DOC, DOCX, XLS, XLSX (max 10MB total)</small>
               </div>
 
               <div class="form-group required">
                 <div class="consent-checkbox">
-                  <input type="checkbox" id="devisConsent" name="consent" required>
-                  <label for="devisConsent">I agree to the use of my data to contact me regarding my quote request. <span class="required-asterisk">*</span></label>
+                  <input type="checkbox" id="quoteConsent" name="consent" required>
+                  <label for="quoteConsent">I agree to the use of my data to contact me regarding my quote request.
+                    <span class="required-asterisk">*</span></label>
                 </div>
               </div>
 
@@ -226,10 +223,10 @@
         <button class="fullscreen-btn" onclick="toggleFullscreen()" aria-label="Fullscreen">
           <i class="fas fa-expand"></i>
         </button>
-        <div class="carousel-overlay">
+        <!-- <div class="carousel-overlay">
           <h1>Building<br>Renovation</h1>
           <p>Complete solutions for your construction<br>and renovation projects</p>
-        </div>
+        </div> -->
         <div class="carousel">
           <button class="carousel-button prev">
             <i class="fas fa-chevron-left"></i>
@@ -264,53 +261,57 @@
       <!-- Datele proiectelor (ascunse) -->
       <div class="projects-data" style="display: none">
         <!-- Datele inițiale (Acasă) -->
-        <div class="project" data-id="0" data-name="Acasă" style="display: block">
+        <div class="project" data-id="0" data-name="Home" style="display: block">
           <div class="project-content">
             <div class="project-images">
-              <div class="project-image" data-src="Content/1.jpg" data-alt="Imagine 1"></div>
-              <div class="project-image" data-src="Content/2.jpg" data-alt="Imagine 2"></div>
-              <div class="project-image" data-src="Content/3.jpg" data-alt="Imagine 3"></div>
-              <div class="project-image" data-src="Content/4.jpg" data-alt="Imagine 4"></div>
+              <div class="project-image" data-src="Content/1.jpg" data-alt="Image 1"></div>
+              <div class="project-image" data-src="Content/2.jpg" data-alt="Image 2"></div>
+              <div class="project-image" data-src="Content/3.jpg" data-alt="Image 3"></div>
+              <div class="project-image" data-src="Content/4.jpg" data-alt="Image 4"></div>
             </div>
             <div class="project-info active" data-project="0">
               <!-- <h3>Bun venit</h3> -->
-              <p>We transform any space into a modern and functional environment, from complete renovations to specific repairs,
-                both interior and exterior. We offer personalized solutions for houses, apartments, offices, and commercial
+              <p>We transform any space into a modern and functional environment, from complete renovations to specific
+                repairs,
+                both interior and exterior. We offer personalized solutions for houses, apartments, offices, and
+                commercial
                 spaces, ensuring top quality and meeting agreed deadlines.</p>
             </div>
           </div>
         </div>
 
         <!-- Proiecte -->
-        <div class="project" data-id="1" data-name="Proiect 1" style="display: none">
+        <div class="project" data-id="1" data-name="Project 1" style="display: none">
           <div class="project-content">
             <div class="project-images">
-              <div class="project-image" data-src="Content/project1-1.jpg" data-alt="Proiect 1 - Imagine 1"></div>
-              <div class="project-image" data-src="Content/project1-2.jpg" data-alt="Proiect 1 - Imagine 2"></div>
-              <div class="project-image" data-src="Content/project1-3.jpg" data-alt="Proiect 1 - Imagine 3"></div>
+              <div class="project-image" data-src="Content/project1-1.jpg" data-alt="Project 1 - Image 1"></div>
+              <div class="project-image" data-src="Content/project1-2.jpg" data-alt="Project 1 - Image 2"></div>
+              <div class="project-image" data-src="Content/project1-3.jpg" data-alt="Project 1 - Image 3"></div>
             </div>
             <div class="project-info">
               <!-- <h3>Proiect 1</h3> -->
               <p>
                 Complete electrical and plumbing solutions, ensuring safety, efficiency, and compliance with all current
-                standards. Design, installation, and maintenance to the highest quality standards, with premium materials
+                standards. Design, installation, and maintenance to the highest quality standards, with premium
+                materials
                 and modern technologies.
               </p>
             </div>
           </div>
         </div>
 
-        <div class="project" data-id="2" data-name="Proiect 2">
+        <div class="project" data-id="2" data-name="Project 2">
           <div class="project-content">
             <div class="project-images">
-              <div class="project-image" data-src="Content/project2-1.jpg" data-alt="Proiect 2 - Imagine 1"></div>
-              <div class="project-image" data-src="Content/project2-2.jpg" data-alt="Proiect 2 - Imagine 2"></div>
-              <div class="project-image" data-src="Content/project2-3.jpg" data-alt="Proiect 2 - Imagine 3"></div>
+              <div class="project-image" data-src="Content/project2-1.jpg" data-alt="Project 2 - Image 1"></div>
+              <div class="project-image" data-src="Content/project2-2.jpg" data-alt="Project 2 - Image 2"></div>
+              <div class="project-image" data-src="Content/project2-3.jpg" data-alt="Project 2 - Image 3"></div>
             </div>
             <div class="project-info">
               <!-- <h3>Proiect 2</h3> -->
               <p>
-                Professional installation of tiles, ceramics, and parquet, with attention to detail and ensuring a durable
+                Professional installation of tiles, ceramics, and parquet, with attention to detail and ensuring a
+                durable
                 and aesthetic result. We work with high-quality materials and provide consultation on choosing the right
                 materials for each space, from bedrooms to offices and storage areas.
               </p>
@@ -318,12 +319,12 @@
           </div>
         </div>
 
-        <div class="project" data-id="3" data-name="Proiect 3">
+        <div class="project" data-id="3" data-name="Project 3">
           <div class="project-content">
             <div class="project-images">
-              <div class="project-image" data-src="Content/project3-1.jpg" data-alt="Proiect 3 - Imagine 1"></div>
-              <div class="project-image" data-src="Content/project3-2.jpg" data-alt="Proiect 3 - Imagine 2"></div>
-              <div class="project-image" data-src="Content/project3-3.jpg" data-alt="Proiect 3 - Imagine 3"></div>
+              <div class="project-image" data-src="Content/project3-1.jpg" data-alt="Project 3 - Image 1"></div>
+              <div class="project-image" data-src="Content/project3-2.jpg" data-alt="Project 3 - Image 2"></div>
+              <div class="project-image" data-src="Content/project3-3.jpg" data-alt="Project 3 - Image 3"></div>
             </div>
             <div class="project-info">
               <!-- <h3>Proiect 3</h3> -->
@@ -346,70 +347,67 @@
             SERVICES
           </button>
           <button class="tab-button" data-tab="about">ABOUT US</button>
-          <button class="tab-button" data-tab="terms">TERMENI ȘI CONDIȚII</button>
+          <button class="tab-button" data-tab="terms">TERMS & CONDITIONS</button>
         </div>
         <div class="tab-content" id="services">
           <div class="service">
             <i class="fas fa-home service-icon"></i>
             <div class="service-content">
-              <h2>RENOVARE INTERIOARĂ & EXTERIOARĂ</h2>
+              <h2>INTERIOR & EXTERIOR RENOVATION</h2>
               <p>
-                Transformăm orice spațiu într-un mediu modern și funcțional,
-                de la renovări complete la reparații specifice, atât la
-                interior, cât și la exterior. Oferim soluții personalizate
-                pentru case, apartamente, birouri și spații comerciale,
-                asigurând calitate superioară și respectarea termenelor
-                stabilite.
+                We transform any space into a modern and functional environment,
+                from complete renovations to specific repairs, both interior and exterior.
+                We offer personalized solutions for houses, apartments, offices, and commercial
+                spaces, ensuring top quality and meeting agreed deadlines.
               </p>
             </div>
           </div>
           <div class="service">
             <i class="fas fa-bolt service-icon"></i>
             <div class="service-content">
-              <h2>INSTALAȚII ELECTRICE & SANITARE</h2>
+              <h2>ELECTRICAL & PLUMBING INSTALLATIONS</h2>
               <p>
-                Soluții complete de instalații electrice și sanitare,
-                asigurând siguranță, eficiență și respectarea tuturor
-                standardelor în vigoare. Proiectare, montaj și întreținere la
-                cele mai înalte standarde de calitate, cu materiale premium și
-                tehnologii moderne.
+                Complete electrical and plumbing solutions, ensuring safety,
+                efficiency, and compliance with all current standards. Design,
+                installation, and maintenance to the highest quality standards,
+                with premium materials and modern technologies.
               </p>
             </div>
           </div>
           <div class="service">
             <i class="fas fa-layer-group service-icon"></i>
             <div class="service-content">
-              <h2>MONTAJ GRESIE, FAIANȚĂ, PARCHET</h2>
+              <h2>TILE, CERAMIC & PARQUET INSTALLATION</h2>
               <p>
-                Montaj profesional de gresie, faianță și parchet, cu atenție
-                la detalii și asigurând un rezultat durabil și estetic. Lucrăm
-                cu materiale de înaltă calitate și oferim consultanță în
-                alegerea materialelor potrivite pentru fiecare spațiu.
+                Professional installation of tiles, ceramics, and parquet, with attention
+                to detail and ensuring a durable and aesthetic result. We work
+                with high-quality materials and provide consultation on choosing the right
+                materials for each space.
               </p>
             </div>
           </div>
           <div class="service">
             <i class="fas fa-paint-roller service-icon"></i>
             <div class="service-content">
-              <h2>FINISAJE & ZUGĂRĂVELI</h2>
+              <h2>FINISHES & PAINTING</h2>
               <p>
-                Execuție impecabilă a lucrărilor de finisare, de la tencuieli
-                și gleturi la vopsitorii de calitate superioară. Oferim
-                soluții de nuanțare personalizată, tratamente speciale pentru
-                pereți și finisaje decorative unice.
+                Impeccable execution of finishing works, from plastering
+                and puttying to superior quality painting. We offer
+                personalized shading solutions, special wall treatments, and unique
+                decorative finishes.
               </p>
             </div>
           </div>
           <div class="service">
             <i class="fas fa-couch service-icon"></i>
             <div class="service-content">
-              <h2>MOBILIER LA COMANDA</h2>
+              <h2>CUSTOM FURNITURE</h2>
               <p>
-                Design și realizare de mobilier personalizat, adaptat perfect
-                nevoilor și preferințelor dumneavoastră. Oferim soluții
-                integrate de mobilier pentru toate încăperile casei sau
-                biroului dumneavoastră, de la bucătărie și dormitoare la
-                birouri și spații de depozitare.
+                Design and production of custom furniture, perfectly adapted
+                to your needs and preferences. We offer integrated
+                furniture solutions for all rooms of your home or
+                office, from kitchens and bedrooms to
+                workspaces and storage areas.
               </p>
             </div>
           </div>
@@ -421,7 +419,7 @@
           <div class="about">
             <i class="fas fa-building about-icon"></i>
             <div class="about-content">
-              <h2>Despre Noi</h2>
+              <h2>About Us</h2>
               <p>
                 Anthala, established in 2025, is a dynamic company specializing in construction,
                 renovations, and interior design. We take pride in our innovative approach and attention to detail in
@@ -433,12 +431,12 @@
           <div class="about">
             <i class="fas fa-calendar-alt about-icon"></i>
             <div class="about-content">
-              <h2>Experiență</h2>
+              <h2>Experience</h2>
               <p>
-                Cu peste 4 ani de activitate în domeniu, am reușit să
-                construim o reputație solidă bazată pe profesionalism și
-                rezultate de calitate. Am finalizat cu succes peste 50 de
-                proiecte de diverse complexități.
+                With over 10 years of activity in the field, we have managed to
+                build a solid reputation based on professionalism and
+                quality results. We have successfully completed over 50
+                projects of various complexities.
               </p>
             </div>
           </div>
@@ -446,12 +444,12 @@
           <div class="about">
             <i class="fas fa-users about-icon"></i>
             <div class="about-content">
-              <h2>Echipă</h2>
+              <h2>Team</h2>
               <p>
-                Echipa noastră este formată din peste 10 specialiști dedicați,
-                inclusiv arhitecți, designeri interiori, meșteri și tehnicieni
-                calificați. Fiecare membru al echipei aduce experiență și
-                expertiză valoroasă în domeniul construcțiilor.
+                Our team consists of over 10 dedicated specialists,
+                including architects, interior designers, craftsmen, and qualified
+                technicians. Each team member brings valuable experience and
+                expertise in the construction field.
               </p>
             </div>
           </div>
@@ -459,12 +457,12 @@
           <div class="about">
             <i class="fas fa-handshake about-icon"></i>
             <div class="about-content">
-              <h2>Parteneri</h2>
+              <h2>Partners</h2>
               <p>
-                Colaborăm cu o rețea extinsă de peste 20 de furnizori și
-                parteneri de încredere, ceea ce ne permite să oferim materiale
-                de cea mai bună calitate la prețuri competitive. Suntem
-                parteneri oficiali ai marcilor de top din industrie.
+                We collaborate with an extensive network of over 20 trusted
+                suppliers and partners, which allows us to offer materials
+                of the highest quality at competitive prices. We are
+                official partners of the top brands in the industry.
               </p>
             </div>
           </div>
@@ -472,12 +470,12 @@
           <div class="about">
             <i class="fas fa-medal about-icon"></i>
             <div class="about-content">
-              <h2>Calitate și Garantie</h2>
+              <h2>Quality & Warranty</h2>
               <p>
-                Oferim garanție pentru toate lucrările executate și ne
-                asigurăm că fiecare proiect respectă cele mai înalte standarde
-                de calitate și norme de siguranță. Utilizăm doar materiale
-                certificate și tehnologii moderne.
+                We offer warranty for all executed works and ensure
+                that each project meets the highest quality standards
+                and safety regulations. We use only certified materials
+                and modern technologies.
               </p>
             </div>
           </div>
@@ -491,15 +489,15 @@
           <div class="service">
             <i class="fas fa-undo service-icon"></i>
             <div class="service-content">
-              <h2>POLITICA DE RETUR</h2>
+              <h2>RETURN POLICY</h2>
               <p>
-                Ne străduim să oferim servicii de cea mai înaltă calitate. În cazul în care nu sunteți mulțumit de
-                rezultat, vă oferim următoarele opțiuni:
+                We strive to provide the highest quality services. If you are not satisfied with
+                the result, we offer you the following options:
               </p>
               <ul class="terms-list">
-                <li>Rezolvarea oricăror probleme în termen de 14 zile de la finalizarea lucrărilor</li>
-                <li>Posibilitatea de a solicita retușări sau corecții în termen de 30 de zile</li>
-                <li>Garanție de până la 5 ani pentru lucrările executate</li>
+                <li>Resolution of any issues within 14 days of completion of work</li>
+                <li>Possibility to request touch-ups or corrections within 30 days</li>
+                <li>Warranty of up to 5 years for executed works</li>
               </ul>
             </div>
           </div>
@@ -507,14 +505,14 @@
           <div class="service">
             <i class="fas fa-lock service-icon"></i>
             <div class="service-content">
-              <h2>PROTECȚIA DATELOR</h2>
+              <h2>DATA PROTECTION</h2>
               <p>
-                Prelucrăm datele dumneavoastră cu responsabilitate și conform reglementărilor GDPR:
+                We process your data responsibly and in accordance with GDPR regulations:
               </p>
               <ul class="terms-list">
-                <li>Datele personale sunt utilizate exclusiv pentru desfășurarea proiectului</li>
-                <li>Nu vindem sau împărtășim datele cu terțe părți fără consimțământul dumneavoastră</li>
-                <li>Aveți dreptul de a solicita ștergerea sau actualizarea datelor</li>
+                <li>Personal data is used exclusively for project execution</li>
+                <li>We do not sell or share data with third parties without your consent</li>
+                <li>You have the right to request deletion or updating of data</li>
               </ul>
             </div>
           </div>
@@ -522,15 +520,15 @@
           <div class="service">
             <i class="fas fa-file-signature service-icon"></i>
             <div class="service-content">
-              <h2>TERMENI ȘI CONDIȚII</h2>
+              <h2>TERMS & CONDITIONS</h2>
               <p>
-                Prin colaborarea cu noi, sunteți de acord cu următoarele condiții:
+                By collaborating with us, you agree to the following conditions:
               </p>
               <ul class="terms-list">
-                <li>Avansul este de 30% din valoarea proiectului</li>
-                <li>Plata finală se efectuează la finalizarea lucrărilor</li>
-                <li>Orice modificări ulterioare vor fi estimate separat</li>
-                <li>Programul de lucru este de luni până vineri, între orele 8:00-18:00</li>
+                <li>Advance payment is 30% of the project value</li>
+                <li>Final payment is made upon completion of works</li>
+                <li>Any subsequent modifications will be estimated separately</li>
+                <li>Working hours are Monday to Friday, between 8:00-18:00</li>
               </ul>
             </div>
           </div>
@@ -554,23 +552,23 @@
             <div class="collaborators-grid">
               <button class="collaborator-btn active" data-content="1">
                 <i class="fas fa-hard-hat"></i>
-                <span class="collaborator-name">Constructii</span>
+                <span class="collaborator-name">Construction</span>
               </button>
               <button class="collaborator-btn" data-content="2">
                 <i class="fas fa-hammer"></i>
-                <span class="collaborator-name">Materiale</span>
+                <span class="collaborator-name">Materials</span>
               </button>
               <button class="collaborator-btn" data-content="3">
                 <i class="fas fa-couch"></i>
-                <span class="collaborator-name">Mobilier</span>
+                <span class="collaborator-name">Furniture</span>
               </button>
               <button class="collaborator-btn" data-content="4">
                 <i class="fas fa-paint-roller"></i>
-                <span class="collaborator-name">Vopsele</span>
+                <span class="collaborator-name">Paints</span>
               </button>
               <button class="collaborator-btn" data-content="5">
                 <i class="fas fa-tools"></i>
-                <span class="collaborator-name">Echipamente</span>
+                <span class="collaborator-name">Equipment</span>
               </button>
               <button class="collaborator-btn" data-content="6">
                 <i class="fas fa-truck"></i>
@@ -578,15 +576,15 @@
               </button>
               <button class="collaborator-btn" data-content="7">
                 <i class="fas fa-lightbulb"></i>
-                <span class="collaborator-name">Iluminat</span>
+                <span class="collaborator-name">Lighting</span>
               </button>
               <button class="collaborator-btn" data-content="8">
                 <i class="fas fa-tint"></i>
-                <span class="collaborator-name">Sanitare</span>
+                <span class="collaborator-name">Plumbing</span>
               </button>
               <button class="collaborator-btn" data-content="9">
                 <i class="fas fa-shield-alt"></i>
-                <span class="collaborator-name">Securitate</span>
+                <span class="collaborator-name">Security</span>
               </button>
             </div>
           </div>
@@ -640,268 +638,265 @@
             <!-- Conținut colaboratori -->
             <div class="collaborator-content active" id="content-1">
               <p>
-                SC Construct Expert SRL este o companie specializată în
-                proiectare și execuție lucrări de construcții, cu o experiență
-                de peste 15 ani pe piața din România.
+                SC Construct Expert SRL is a company specialized in
+                architectural design and construction work execution, with over 15 years
+                of experience in the Romanian market.
               </p>
               <ul>
-                <li>Proiectare arhitecturală și structurală</li>
-                <li>Execuție lucrări de construcții noi</li>
-                <li>Renovări și reabilitări complete</li>
-                <li>Lucrări de finisaje interioare și exterioare</li>
-                <li>Management integrat de proiect</li>
+                <li>Architectural and structural design</li>
+                <li>Execution of new construction works</li>
+                <li>Complete renovations and rehabilitations</li>
+                <li>Interior and exterior finishing works</li>
+                <li>Integrated project management</li>
               </ul>
             </div>
 
             <div class="collaborator-content" id="content-2">
               <p>
-                SC Instalații Expert SRL oferă soluții complete de instalații
-                pentru orice tip de construcție, de la proiectare la punere în
-                funcțiune.
+                SC Instalații Expert SRL offers complete installation solutions
+                for any type of construction, from design to commissioning.
               </p>
               <ul>
-                <li>Instalații electrice și iluminat</li>
-                <li>Instalații sanitare și termice</li>
-                <li>Instalații de încălzire și ventilare</li>
-                <li>Instalații de aer condiționat</li>
-                <li>Automatizări și sisteme inteligente</li>
+                <li>Electrical installations and lighting</li>
+                <li>Sanitary and thermal installations</li>
+                <li>Heating and ventilation installations</li>
+                <li>Air conditioning installations</li>
+                <li>Automations and intelligent systems</li>
               </ul>
             </div>
 
             <div class="collaborator-content" id="content-3">
               <p>
-                SC Design Interior SRL creează spații unice și funcționale,
-                combinând estetica cu practicitatea în fiecare proiect.
+                SC Design Interior SRL creates unique and functional spaces,
+                combining aesthetics with practicality in each project.
               </p>
               <ul>
-                <li>Design interior personalizat</li>
-                <li>Proiectare mobilier la comandă</li>
-                <li>Consultanță materiale și finisaje</li>
-                <li>Proiectare iluminat</li>
-                <li>Decorare și amenajare spații</li>
+                <li>Customized interior design</li>
+                <li>Custom furniture design</li>
+                <li>Materials and finishes consulting</li>
+                <li>Lighting design</li>
+                <li>Space decoration and layout</li>
               </ul>
             </div>
 
             <div class="collaborator-content" id="content-4">
               <p>
-                SC Paza și Securitate SRL asigură protecția și siguranța
-                proiectelor noastre, cu sisteme moderne de securitate.
+                SC Paza și Securitate SRL ensures the protection and safety
+                of our projects, with modern security systems.
               </p>
               <ul>
-                <li>Sisteme de supraveghere video</li>
-                <li>Sisteme de alarmă și protecție</li>
-                <li>Control acces și sisteme de securitate</li>
-                <li>Paza obiectivelor</li>
-                <li>Analiză și evaluare riscuri</li>
+                <li>Video surveillance systems</li>
+                <li>Alarm and protection systems</li>
+                <li>Access control and security systems</li>
+                <li>Site security</li>
+                <li>Risk analysis and evaluation</li>
               </ul>
             </div>
 
             <div class="collaborator-content" id="content-5">
               <p>
-                SC Curățenie Profi SRL oferă servicii profesionale de
-                curățenie și întreținere spații, asigurând un mediu curat și
-                igienizat.
+                SC Curățenie Profi SRL offers professional cleaning and
+                space maintenance services, ensuring a clean and
+                sanitized environment.
               </p>
               <ul>
-                <li>Curățenie după construcții</li>
-                <li>Curățenie generală și de întreținere</li>
-                <li>Spălare geamuri și fațade</li>
-                <li>Curățenie specializată</li>
-                <li>Servicii de deratizare și dezinsecție</li>
+                <li>Post-construction cleaning</li>
+                <li>General cleaning and maintenance</li>
+                <li>Window and facade washing</li>
+                <li>Specialized cleaning</li>
+                <li>Deratization and disinfection services</li>
               </ul>
             </div>
 
             <div class="collaborator-content" id="content-6">
               <p>
-                SC Pomișoarele Verzi SRL este specializată în amenajări
-                exterioare și peisagistice, transformând orice spațiu într-o
-                oază de frumusețe.
+                SC Pomișoarele Verzi SRL specializes in exterior design
+                and landscaping, transforming any space into a
+                beautiful oasis.
               </p>
               <ul>
-                <li>Proiectare și execuție spații verzi</li>
-                <li>Îngrijire și întreținere grădini</li>
-                <li>Sisteme de irigații automate</li>
-                <li>Plante decorative și arbuști</li>
-                <li>Gazon natural și sintetic</li>
+                <li>Green space design and execution</li>
+                <li>Garden care and maintenance</li>
+                <li>Automatic irrigation systems</li>
+                <li>Decorative plants and shrubs</li>
+                <li>Natural and synthetic turf</li>
               </ul>
             </div>
 
             <div class="collaborator-content" id="content-7">
               <p>
-                SC Instalații Electrice Avansate SRL oferă soluții complete
-                pentru orice nevoie de infrastructură electrică și
-                automatizări.
+                SC Instalații Electrice Avansate SRL offers complete solutions
+                for any electrical infrastructure and automation needs.
               </p>
               <ul>
-                <li>Instalații electrice rezidențiale și industriale</li>
-                <li>Automatizări clădiri inteligente</li>
-                <li>Parcări de panouri fotovoltaice</li>
-                <li>Instalații de stingere incendiu</li>
-                <li>Sisteme de monitorizare consum energie</li>
+                <li>Residential and industrial electrical installations</li>
+                <li>Smart building automations</li>
+                <li>Photovoltaic panel installations</li>
+                <li>Fire suppression installations</li>
+                <li>Energy consumption monitoring systems</li>
               </ul>
             </div>
 
             <div class="collaborator-content" id="content-8">
               <p>
-                SC Finisaje de Lux SRL aduce un plus de rafinament și calitate
-                superioară fiecărui proiect, prin materiale premium și
-                execuție impecabilă.
+                SC Finisaje de Lux SRL brings a touch of refinement and superior
+                quality to each project, through premium materials and
+                impeccable execution.
               </p>
               <ul>
-                <li>Finisaje interioare premium</li>
-                <li>Pardoseli din lemn masiv</li>
-                <li>Faianțe și mozaicuri personalizate</li>
-                <li>Tâmplărie de lux</li>
-                <li>Accesorii și elemente decorative</li>
+                <li>Premium interior finishes</li>
+                <li>Solid wood flooring</li>
+                <li>Customized tiles and mosaics</li>
+                <li>Luxury carpentry</li>
+                <li>Accessories and decorative elements</li>
               </ul>
             </div>
 
             <div class="collaborator-content" id="content-9">
               <p>
-                SC Instalații Speciale SRL oferă soluții inovatoare pentru
-                instalații tehnice speciale, asigurând conformitatea cu cele
-                mai recente standarde.
+                SC Instalații Speciale SRL offers innovative solutions for
+                special technical installations, ensuring compliance with the
+                latest standards.
               </p>
               <ul>
-                <li>Instalații de stingere automată</li>
-                <li>Sisteme de detecție incendiu</li>
-                <li>Instalații de ventilație mecanică</li>
-                <li>Sisteme de apă stins incendiu</li>
-                <li>Instalații de gaze tehnologice</li>
+                <li>Automatic fire suppression installations</li>
+                <li>Fire detection systems</li>
+                <li>Mechanical ventilation installations</li>
+                <li>Fire water systems</li>
+                <li>Technical gas installations</li>
               </ul>
             </div>
 
             <!-- Conținut parteneri -->
             <div class="partner-content" id="content-p1">
               <p>
-                Saint-Gobain este un lider global în construcții durabile,
-                oferind soluții inovatoare pentru clădiri eficiente din punct
-                de vedere energetic.
+                Saint-Gobain is a global leader in sustainable construction,
+                offering innovative solutions for energy-efficient buildings.
               </p>
               <ul>
-                <li>Materiale de construcții de înaltă calitate</li>
-                <li>Soluții pentru izolație termică și acustică</li>
-                <li>Sisteme de fațade și acoperișuri</li>
-                <li>Produse pentru construcții interioare</li>
-                <li>Tehnologii pentru construcții durabile</li>
+                <li>High-quality construction materials</li>
+                <li>Solutions for thermal and acoustic insulation</li>
+                <li>Facade and roofing systems</li>
+                <li>Interior construction products</li>
+                <li>Technologies for sustainable construction</li>
               </ul>
             </div>
 
             <div class="partner-content" id="content-p2">
               <p>
-                Knauf este unul dintre cei mai mari producători mondiali de
-                materiale de construcții uscate, cu o gamă completă de soluții
-                pentru construcții interioare.
+                Knauf is one of the world's largest manufacturers of
+                dry construction materials, with a complete range of solutions
+                for interior construction.
               </p>
               <ul>
-                <li>Plăci de gips-carton și profile metalice</li>
-                <li>Materiale de finisare interioară</li>
-                <li>Sisteme de fațade ventilate</li>
-                <li>Soluții pentru tavan fals</li>
-                <li>Materiale de izolație termică</li>
+                <li>Plasterboard panels and metal profiles</li>
+                <li>Interior finishing materials</li>
+                <li>Ventilated facade systems</li>
+                <li>False ceiling solutions</li>
+                <li>Thermal insulation materials</li>
               </ul>
             </div>
 
             <div class="partner-content" id="content-p3">
               <p>
-                Weber oferă soluții inovatoare de adezivi, chituri și
-                materiale de finisare pentru construcții, cu accent pe
-                durabilitate și calitate.
+                Weber offers innovative solutions for adhesives, grouts, and
+                finishing materials for construction, with emphasis on
+                durability and quality.
               </p>
               <ul>
-                <li>Adezivi pentru plăci ceramice</li>
-                <li>Chituri și mortare de reparații</li>
-                <li>Materiale de hidroizolație</li>
-                <li>Sisteme de termoizolație</li>
-                <li>Finisaje decorative</li>
+                <li>Adhesives for ceramic tiles</li>
+                <li>Grouts and repair mortars</li>
+                <li>Waterproofing materials</li>
+                <li>Thermal insulation systems</li>
+                <li>Decorative finishes</li>
               </ul>
             </div>
 
             <div class="partner-content" id="content-p4">
               <p>
-                Hilti oferă soluții inovatoare și servicii profesionale pentru
-                industria construcțiilor, cu accent pe productivitate și
-                siguranță.
+                Hilti offers innovative solutions and professional services for
+                the construction industry, with emphasis on productivity and
+                safety.
               </p>
               <ul>
-                <li>Unelte electrice profesionale</li>
-                <li>Sisteme de fixare chimică și mecanică</li>
-                <li>Soluții pentru montaj și fixare</li>
-                <li>Servicii de întreținere și reparații</li>
+                <li>Professional power tools</li>
+                <li>Chemical and mechanical fastening systems</li>
+                <li>Solutions for installation and fixing</li>
+                <li>Maintenance and repair services</li>
               </ul>
             </div>
 
             <div class="partner-content" id="content-p5">
               <p>
-                Tarkett este un lider mondial în soluții de pardoseli, oferind
-                o gamă largă de parchete, laminat, PVC și covoare.
+                Tarkett is a world leader in flooring solutions, offering
+                a wide range of parquet, laminate, PVC, and carpets.
               </p>
               <ul>
-                <li>Parchet masiv și stratificat</li>
-                <li>Pardoseli laminate</li>
-                <li>Pardoseli PVC</li>
-                <li>Covoare și mochete</li>
-                <li>Accesorii și întreținere</li>
+                <li>Solid and layered parquet</li>
+                <li>Laminate flooring</li>
+                <li>PVC flooring</li>
+                <li>Carpets and rugs</li>
+                <li>Accessories and maintenance</li>
               </ul>
             </div>
 
             <div class="partner-content" id="content-p6">
               <p>
-                Viega oferă soluții inovatoare pentru instalații sanitare, cu
-                tehnologii inovatoare pentru distribuția apei potabile și a
-                apei menajere.
+                Viega offers innovative solutions for sanitary installations, with
+                innovative technologies for the distribution of drinking water and
+                household water.
               </p>
               <ul>
-                <li>Sisteme de distribuție a apei</li>
-                <li>Tehnologie de preaplin</li>
-                <li>Sisteme de protecție împotriva returului apei</li>
-                <li>Armături și robinete</li>
-                <li>Soluții pentru băi și bucătării</li>
+                <li>Water distribution systems</li>
+                <li>Overflow technology</li>
+                <li>Water backflow protection systems</li>
+                <li>Fittings and faucets</li>
+                <li>Solutions for bathrooms and kitchens</li>
               </ul>
             </div>
 
             <div class="partner-content" id="content-p7">
               <p>
-                Daikin este un lider mondial în soluții de climatizare,
-                încălzire și ventilație, cu tehnologii inovatoare și eficiente
-                energetic.
+                Daikin is a world leader in air conditioning, heating,
+                and ventilation solutions, with innovative and energy-efficient
+                technologies.
               </p>
               <ul>
-                <li>Aer condiționat rezidențial și comercial</li>
-                <li>Sisteme de încălzire cu pompă de căldură</li>
-                <li>Ventilație cu recuperare de căldură</li>
-                <li>Sisteme VRV/VRF</li>
-                <li>Soluții de management energetic</li>
+                <li>Residential and commercial air conditioning</li>
+                <li>Heat pump heating systems</li>
+                <li>Heat recovery ventilation</li>
+                <li>VRV/VRF systems</li>
+                <li>Energy management solutions</li>
               </ul>
             </div>
 
             <div class="partner-content" id="content-p8">
               <p>
-                Schneider Electric oferă soluții digitale pentru gestionarea
-                și automatizarea energiei, contribuind la eficiența energetică
-                și durabilitate.
+                Schneider Electric offers digital solutions for energy management
+                and automation, contributing to energy efficiency and
+                sustainability.
               </p>
               <ul>
-                <li>Pânze electrice și automate</li>
-                <li>Sisteme de automatizare clădiri</li>
-                <li>Echipamente de protecție și comutație</li>
-                <li>Soluții pentru rețele electrice</li>
-                <li>Sisteme de monitorizare energetică</li>
+                <li>Electrical panels and automations</li>
+                <li>Building automation systems</li>
+                <li>Protection and switching equipment</li>
+                <li>Solutions for electrical networks</li>
+                <li>Energy monitoring systems</li>
               </ul>
             </div>
 
             <div class="partner-content" id="content-p9">
               <p>
-                Bosch oferă soluții inovatoare pentru construcții și
-                instalații, cu accent pe calitate, durabilitate și inovație
-                tehnologică.
+                Bosch offers innovative solutions for construction and
+                installations, with emphasis on quality, durability, and
+                technological innovation.
               </p>
               <ul>
-                <li>Unelte electrice profesionale</li>
-                <li>Sisteme de securitate și acces</li>
-                <li>Echipamente de încălzire</li>
-                <li>Soluții pentru instalații sanitare</li>
-                <li>Tehnologii pentru construcții inteligente</li>
+                <li>Professional power tools</li>
+                <li>Security and access systems</li>
+                <li>Heating equipment</li>
+                <li>Solutions for sanitary installations</li>
+                <li>Technologies for smart construction</li>
               </ul>
             </div>
           </div>
@@ -913,7 +908,7 @@
   <!-- Mobile Footer -->
   <footer class="mobile-footer">
     <div class="footer-social-links">
-      <a href="tel:+33663943753" class="social-link" aria-label="Call"><i class="fas fa-phone"></i></a>
+      <a href="tel:+447435401638" class="social-link" aria-label="Call +44 7435 401638"><i class="fas fa-phone"></i></a>
       <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
       <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -925,10 +920,10 @@
   <script src="fullscreen-fix.js" defer></script>
   <script src="script.js" defer></script>
   <script src="js/contact-modal.js" defer></script>
-  <script src="js/devis-modal.js" defer></script>
+  <script src="js/quote-modal.js" defer></script>
   <script src="js/resizer.js" defer></script>
 
-  <!-- Preload pentru font-uri critice -->
+  <!-- Preload for critical fonts -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2"
     as="font" type="font/woff2" crossorigin>
 

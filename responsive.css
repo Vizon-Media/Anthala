@@ -1,5 +1,39 @@
 /* Mobile styles (max-width: 767px) */
 @media screen and (max-width: 767px) {
+  /* Make tabs container buttons take full width */
+  .tabs-container {
+    display: flex;
+    width: 100%;
+  }
+
+  .tabs-container .tab-button {
+    flex: 1;
+    text-align: center;
+    padding: 8px 5px;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.2;
+    min-height: 44px; /* Minimum touch target size for better usability */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.tab-button {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 0.8em;
+  font-weight: 600;
+  padding: 8px 10px;
+  margin-right: 0px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 
   .site-header {
     width: 100%;
@@ -59,7 +93,7 @@
     height: 100%;
   }
 
-  .devis-btn {
+  .quote-btn {
     padding: 0 12px;
     font-size: 0.85em;
   }
@@ -67,15 +101,44 @@
 
   .bottom-small {
     display: flex;
+    border-radius: 0;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    height: 100svh;
+    align-items: stretch;
     width: 100%;
-    padding: 15px 15px 50px 15px;
+    max-height: calc(100svh - 7svh);
+    min-height: 300px;
+    padding: 15px;
     box-sizing: border-box;
     overflow-y: auto;
-    gap: 0px;
+    margin: 0 0 7svh 0;
+  }
+
+  .top-large {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100svh - 15svh);
+    /* Scădem înălțimea header-ului și a footer-ului */
+    min-height: 300px;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .bottom-small>* {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+    margin-bottom: 15px;
+    max-height: calc(100svh - 7svh);
+
+  }
+
+  .bottom-small>*:last-child {
+    margin-bottom: 0;
   }
 
   /* Carousel Overlay */
@@ -146,7 +209,7 @@
     z-index: 1001;
   }
 
-  #devisForm,
+  #quoteForm,
   #contactForm {
     padding-bottom: 20px;
   }
@@ -154,18 +217,18 @@
   .main-container {
     flex-direction: column;
     height: auto;
-    gap: 0;
+    gap: 10px;
     box-shadow: none;
     padding: 0;
   }
 
   .left-large {
-    width: 100% !important;
-    height: 85svh !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
+    width: calc(100% - 20px) !important;
+    height: 83.5svh !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0 10px !important;
   }
 
   .right-small {
@@ -176,13 +239,6 @@
     gap: 0;
   }
 
-  .top-large {
-    box-shadow: none;
-    border-radius: 0;
-    padding: 0;
-    margin: 0;
-    height: 100svh;
-  }
 
   .project-button {
     font-size: 0.6em;
@@ -202,24 +258,9 @@
     display: flex;
     width: 100%;
     flex-wrap: nowrap;
-    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     gap: 1px;
-  }
-
-  .tab-button {
-    background: none;
-    border: none;
-    color: var(--text-light);
-    font-size: 0.8em;
-    font-weight: 600;
-    margin-right: 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
   }
 
   .tab-panel {
@@ -234,7 +275,6 @@
     justify-content: flex-start;
     margin-bottom: 0px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 5px;
   }
 
   .tabs-container::-webkit-scrollbar,
@@ -311,7 +351,7 @@
   .tab-content,
   .collaborator-content,
   .partner-content {
-    padding: 10px;
+    /* padding: 10px; */
     max-height: none !important;
     overflow-y: visible;
     width: 100% !important;
@@ -329,10 +369,6 @@
     margin: 0;
     box-sizing: border-box;
     position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
   }
 
   .tab-content.fade-in-up>* {
@@ -344,7 +380,6 @@
   #about,
   #terms {
     width: 100%;
-    padding: 15px;
     box-sizing: border-box;
   }
 

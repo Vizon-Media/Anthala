@@ -74,14 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Check file size (max 5MB)
                 const maxSize = 5 * 1024 * 1024; // 5MB in bytes
                 if (file.size > maxSize) {
-                    alert('Fișierul este prea mare. Mărimea maximă permisă este de 5MB.');
+                    alert('File is too large. Maximum allowed size is 5MB.');
                     fileInput.value = '';
                     fileInfo.textContent = '';
                     return;
                 }
                 
                 selectedFile = file;
-                fileInfo.textContent = `Fișier selectat: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+                fileInfo.textContent = `Selected file: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
             } else {
                 selectedFile = null;
                 fileInfo.textContent = '';
@@ -103,47 +103,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Validate form
             if (!formObject.name || !formObject.email || !formObject.message) {
-                alert('Vă rugăm completați toate câmpurile obligatorii.');
+                alert('Please fill in all required fields.');
                 return;
             }
 
             // Validate email format
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(formObject.email)) {
-                alert('Vă rugăm introduceți o adresă de email validă.');
+                alert('Please enter a valid email address.');
                 return;
             }
 
             // Prepare email body
-            let body = `Nume: ${formObject.name}%0D%0A`;
+            let body = `Name: ${formObject.name}%0D%0A`;
             body += `Email: ${formObject.email}%0D%0A`;
             if (formObject.subject) {
-                body += `Subiect: ${formObject.subject}%0D%0A`;
+                body += `Subject: ${formObject.subject}%0D%0A`;
             }
-            body += `%0D%0AMesaj:%0D%0A${formObject.message}`;
+            body += `%0D%0AMessage:%0D%0A${formObject.message}`;
 
             // Add file info to the email body if a file is selected
             if (selectedFile) {
-                body += `%0D%0A%0D%0AFișier atașat: ${selectedFile.name} (${(selectedFile.size / 1024 / 1024).toFixed(2)} MB)%0D%0A`;
-                body += `Notă: Fișierele nu pot fi atașate direct prin acest formular. `;
-                body += `Vă rugăm să atașați manual fișierul în clientul dvs. de email.`;
+                body += `%0D%0A%0D%0AAttached file: ${selectedFile.name} (${(selectedFile.size / 1024 / 1024).toFixed(2)} MB)%0D%0A`;
+                body += `Note: Files cannot be attached directly through this form. `;
+                body += `Please attach the file manually in your email client.`;
             }
 
             // Send email using mailto (client-side only solution)
             const email = 'radu.tonu@yahoo.com';
-            const subject = formObject.subject || 'Nou mesaj de pe site';
+            const subject = formObject.subject || 'New message from website';
             
             window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
             
             // Show success message
-            let successMessage = 'Vă mulțumim pentru mesaj! Un formular de e-mail s-a deschis. ';
-            successMessage += 'Vă rugăm să trimiteți mesajul din clientul dvs. de e-mail.';
+            const successMessage = document.createElement('div');
+            successMessage.className = 'success-message';
+            successMessage.textContent = 'Thank you for your message! Your email client has opened with a pre-filled message. Please send it to contact us.';
             
             if (selectedFile) {
-                successMessage += '\n\nVă rugăm nu uitați să atașați fișierul în clientul de email.';
+                successMessage.textContent += '\n\nPlease remember to attach your file in the email client.';
             }
             
-            alert(successMessage);
+            document.body.appendChild(successMessage);
+            
+            // Remove success message after 5 seconds
+            setTimeout(() => {
+                successMessage.remove();
+            }, 5000);
             
             // Reset form and close modal
             contactForm.reset();
